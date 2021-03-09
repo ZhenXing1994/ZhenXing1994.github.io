@@ -6,7 +6,7 @@
   <link href="http://zhenxingblog.site/atom.xml" rel="self"/>
   
   <link href="http://zhenxingblog.site/"/>
-  <updated>2021-03-09T03:01:51.381Z</updated>
+  <updated>2021-03-09T03:05:23.283Z</updated>
   <id>http://zhenxingblog.site/</id>
   
   <author>
@@ -21,17 +21,17 @@
     <link href="http://zhenxingblog.site/posts/556d494c/"/>
     <id>http://zhenxingblog.site/posts/556d494c/</id>
     <published>2021-03-09T00:43:28.000Z</published>
-    <updated>2021-03-09T03:01:51.381Z</updated>
+    <updated>2021-03-09T03:05:23.283Z</updated>
     
     
     <summary type="html">&lt;p&gt;Stopwatch类用于测量一段代码的运行时长，可以测量多个时间间隔的总运行时间。一般使用步骤Start() &amp;gt;&amp;gt;&amp;gt; DoSomething() &amp;gt;&amp;gt;&amp;gt; Stop()，最后使用 Elapsed 属性检查运行时间。每次Start()计算时间都要叠加前几次的运行时长&lt;/p&gt;</summary>
     
     
     
-    <category term="CShape" scheme="http://zhenxingblog.site/categories/CShape/"/>
+    <category term="C#" scheme="http://zhenxingblog.site/categories/C/"/>
     
     
-    <category term="CShape" scheme="http://zhenxingblog.site/tags/CShape/"/>
+    <category term="C#" scheme="http://zhenxingblog.site/tags/C/"/>
     
     <category term="时间检测" scheme="http://zhenxingblog.site/tags/%E6%97%B6%E9%97%B4%E6%A3%80%E6%B5%8B/"/>
     
@@ -42,17 +42,17 @@
     <link href="http://zhenxingblog.site/posts/9d3dd46f/"/>
     <id>http://zhenxingblog.site/posts/9d3dd46f/</id>
     <published>2021-03-09T00:42:31.000Z</published>
-    <updated>2021-03-09T03:01:55.557Z</updated>
+    <updated>2021-03-09T03:05:19.706Z</updated>
     
     
     <summary type="html">&lt;p&gt;Lock和Monitor没区别，简单来讲Lock是Monitor的进一步封装&lt;br&gt;锁定的目的：由于多个线程并行/并发处理同一个“数据对象”（比如：在其它线程的某个地方发生了Clear、Add、Remove、Change等操作），导致“数据对象”不断变化，没法用了，所以，为了保证数据在某个计算时刻的“恒定”，使用排它锁将“数据对象”锁定，然后就视该“数据对象”为“一个恒定量”进行逻辑处理。&lt;/p&gt;</summary>
     
     
     
-    <category term="CShape" scheme="http://zhenxingblog.site/categories/CShape/"/>
+    <category term="C#" scheme="http://zhenxingblog.site/categories/C/"/>
     
     
-    <category term="CShape" scheme="http://zhenxingblog.site/tags/CShape/"/>
+    <category term="C#" scheme="http://zhenxingblog.site/tags/C/"/>
     
     <category term="线程锁" scheme="http://zhenxingblog.site/tags/%E7%BA%BF%E7%A8%8B%E9%94%81/"/>
     
