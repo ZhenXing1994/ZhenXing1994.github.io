@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ZhenXing Blog</title>
+  <icon>http://zhenxingblog.site/icon.png</icon>
+  <subtitle>看山是山，看山不是山，看山还是山</subtitle>
+  <link href="http://zhenxingblog.site/atom.xml" rel="self"/>
+  
+  <link href="http://zhenxingblog.site/"/>
+  <updated>2021-03-09T03:01:51.381Z</updated>
+  <id>http://zhenxingblog.site/</id>
+  
+  <author>
+    <name>ZhenXing</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Stopwatch使用</title>
+    <link href="http://zhenxingblog.site/posts/556d494c/"/>
+    <id>http://zhenxingblog.site/posts/556d494c/</id>
+    <published>2021-03-09T00:43:28.000Z</published>
+    <updated>2021-03-09T03:01:51.381Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Stopwatch类用于测量一段代码的运行时长，可以测量多个时间间隔的总运行时间。一般使用步骤Start() &amp;gt;&amp;gt;&amp;gt; DoSomething() &amp;gt;&amp;gt;&amp;gt; Stop()，最后使用 Elapsed 属性检查运行时间。每次Start()计算时间都要叠加前几次的运行时长&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="CShape" scheme="http://zhenxingblog.site/categories/CShape/"/>
+    
+    
+    <category term="CShape" scheme="http://zhenxingblog.site/tags/CShape/"/>
+    
+    <category term="时间检测" scheme="http://zhenxingblog.site/tags/%E6%97%B6%E9%97%B4%E6%A3%80%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Monitor和Lock区别</title>
+    <link href="http://zhenxingblog.site/posts/9d3dd46f/"/>
+    <id>http://zhenxingblog.site/posts/9d3dd46f/</id>
+    <published>2021-03-09T00:42:31.000Z</published>
+    <updated>2021-03-09T03:01:55.557Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Lock和Monitor没区别，简单来讲Lock是Monitor的进一步封装&lt;br&gt;锁定的目的：由于多个线程并行/并发处理同一个“数据对象”（比如：在其它线程的某个地方发生了Clear、Add、Remove、Change等操作），导致“数据对象”不断变化，没法用了，所以，为了保证数据在某个计算时刻的“恒定”，使用排它锁将“数据对象”锁定，然后就视该“数据对象”为“一个恒定量”进行逻辑处理。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="CShape" scheme="http://zhenxingblog.site/categories/CShape/"/>
+    
+    
+    <category term="CShape" scheme="http://zhenxingblog.site/tags/CShape/"/>
+    
+    <category term="线程锁" scheme="http://zhenxingblog.site/tags/%E7%BA%BF%E7%A8%8B%E9%94%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS入门</title>
+    <link href="http://zhenxingblog.site/posts/cd86acaf/"/>
+    <id>http://zhenxingblog.site/posts/cd86acaf/</id>
+    <published>2021-03-02T07:18:14.000Z</published>
+    <updated>2021-03-06T14:09:23.029Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在WEB前端开发中，采用&lt;code&gt;&amp;lt;Talbe/&amp;gt;&lt;/code&gt;布局并不是太灵活，一般采用DIV+CSS方式进行布局。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="WEB前端开发" scheme="http://zhenxingblog.site/categories/WEB%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="HTML" scheme="http://zhenxingblog.site/tags/HTML/"/>
+    
+    <category term="CSS" scheme="http://zhenxingblog.site/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>01.DotNet Core Blog:基于EFCore数据库设计与开发</title>
+    <link href="http://zhenxingblog.site/posts/ec75ea98/"/>
+    <id>http://zhenxingblog.site/posts/ec75ea98/</id>
+    <published>2021-02-27T05:29:37.000Z</published>
+    <updated>2021-03-02T07:19:41.706Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;使用Asp.Net Core设计开发个人博客:第一阶段数据库设计&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="DotNet Core" scheme="http://zhenxingblog.site/categories/DotNet-Core/"/>
+    
+    
+    <category term="WebApi" scheme="http://zhenxingblog.site/tags/WebApi/"/>
+    
+    <category term="EFCore" scheme="http://zhenxingblog.site/tags/EFCore/"/>
+    
+    <category term="Blog" scheme="http://zhenxingblog.site/tags/Blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Reinforcement Learning And optimal adaptive control</title>
+    <link href="http://zhenxingblog.site/posts/fd577013/"/>
+    <id>http://zhenxingblog.site/posts/fd577013/</id>
+    <published>2021-02-26T14:19:52.000Z</published>
+    <updated>2021-02-26T14:25:52.557Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ESP32_Interrupt</title>
+    <link href="http://zhenxingblog.site/posts/b8e6041e/"/>
+    <id>http://zhenxingblog.site/posts/b8e6041e/</id>
+    <published>2021-02-18T11:12:06.000Z</published>
+    <updated>2021-02-26T13:26:54.823Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;实现两种功能:&lt;br&gt;利用轮询方式判断按键是否按下，短、长按，连发等功能的实现&lt;br&gt;利用外部中断判断按键是否按下，获取按下时长&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="单片机" scheme="http://zhenxingblog.site/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+    <category term="ESP32" scheme="http://zhenxingblog.site/tags/ESP32/"/>
+    
+    <category term="Interrupt" scheme="http://zhenxingblog.site/tags/Interrupt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ESP32_ADC</title>
+    <link href="http://zhenxingblog.site/posts/4a89b3b9/"/>
+    <id>http://zhenxingblog.site/posts/4a89b3b9/</id>
+    <published>2021-02-18T08:44:16.000Z</published>
+    <updated>2021-02-26T13:26:54.821Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;ESP32 集成了2个12位逐次逼近型AD,有5个专用转换控制器管理,支持18个AD转换通道,可以测量内部VDD等电压信号，本次实验利用一路AD采集光敏电阻电压&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="单片机" scheme="http://zhenxingblog.site/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+    <category term="ESP32" scheme="http://zhenxingblog.site/tags/ESP32/"/>
+    
+    <category term="ADC" scheme="http://zhenxingblog.site/tags/ADC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ESP32_LEDC_PWM</title>
+    <link href="http://zhenxingblog.site/posts/d213032/"/>
+    <id>http://zhenxingblog.site/posts/d213032/</id>
+    <published>2021-02-18T03:08:49.000Z</published>
+    <updated>2021-02-26T13:26:54.825Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;LEDC(LED Control)是ESP32封装好的PWM定时器,可以产生16个通道，用于生成独立波形、驱动RGB灯、呼吸灯以及电机调速&lt;br&gt;本次Demo，使用LEDC控制LED作为呼吸灯。&lt;br&gt;呼吸灯原理分析：模拟人体呼吸，吸气和呼气各占1.5S，空气吸入量0%-&amp;gt;100%,呼出量100%-&amp;gt;0%变化。因此设计灯光占空比在3s内由0%-&amp;gt;100%,然后下一个3s由100%-&amp;gt;0%变化&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="单片机" scheme="http://zhenxingblog.site/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+    <category term="ESP32" scheme="http://zhenxingblog.site/tags/ESP32/"/>
+    
+    <category term="PWM" scheme="http://zhenxingblog.site/tags/PWM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ESP32_LED</title>
+    <link href="http://zhenxingblog.site/posts/c52e8408/"/>
+    <id>http://zhenxingblog.site/posts/c52e8408/</id>
+    <published>2021-02-17T17:09:44.000Z</published>
+    <updated>2021-02-26T13:33:30.490Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;ESP32控制LED灯亮灭 (裸机模式&amp;amp;FreeRTOS系统)&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="单片机" scheme="http://zhenxingblog.site/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+    <category term="ESP32" scheme="http://zhenxingblog.site/tags/ESP32/"/>
+    
+    <category term="LED" scheme="http://zhenxingblog.site/tags/LED/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HexTag标签插件使用</title>
+    <link href="http://zhenxingblog.site/posts/761ddf72/"/>
+    <id>http://zhenxingblog.site/posts/761ddf72/</id>
+    <published>2021-02-17T15:29:21.000Z</published>
+    <updated>2021-02-26T13:26:54.827Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Tag Plugin是一种支持Hexo以标签插件形式来标准Markdown中显示具有自定义尺寸的图像。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Hexo" scheme="http://zhenxingblog.site/categories/Hexo/"/>
+    
+    
+    <category term="Hexo" scheme="http://zhenxingblog.site/tags/Hexo/"/>
+    
+    <category term="插件" scheme="http://zhenxingblog.site/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ESP32打印日志</title>
+    <link href="http://zhenxingblog.site/posts/dd7e10ee/"/>
+    <id>http://zhenxingblog.site/posts/dd7e10ee/</id>
+    <published>2021-02-17T09:37:53.000Z</published>
+    <updated>2021-02-26T13:26:54.826Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;ESP32日志报文打印API测试，掌握Debug,Info,Warn以及Error四种日志报文输出，获取ESP32芯片相关信息并打印输出&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="单片机" scheme="http://zhenxingblog.site/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+    <category term="ESP32" scheme="http://zhenxingblog.site/tags/ESP32/"/>
+    
+    <category term="打印日志信息" scheme="http://zhenxingblog.site/tags/%E6%89%93%E5%8D%B0%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ESP32开发板介绍</title>
+    <link href="http://zhenxingblog.site/posts/209c3d55/"/>
+    <id>http://zhenxingblog.site/posts/209c3d55/</id>
+    <published>2021-02-16T15:42:15.000Z</published>
+    <updated>2021-02-26T13:26:54.825Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;购买ESP32开发板,掌握ESP32开发环境，API调用，主要为了熟悉并掌握MQTT功能，开发板购买链接如下:&lt;br&gt;&lt;a&gt;&lt;a href=&quot;https://item.taobao.com/item.htm?spm=a2oq0.12575281.0.0.50111deb2Ij1As&amp;amp;ft=t&amp;amp;id=626366733674&quot;&gt;https://item.taobao.com/item.htm?spm=a2oq0.12575281.0.0.50111deb2Ij1As&amp;amp;ft=t&amp;amp;id=626366733674&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="单片机" scheme="http://zhenxingblog.site/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+    <category term="ESP32" scheme="http://zhenxingblog.site/tags/ESP32/"/>
+    
+    <category term="硬件" scheme="http://zhenxingblog.site/tags/%E7%A1%AC%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTML入门笔记</title>
+    <link href="http://zhenxingblog.site/posts/ea82bb07/"/>
+    <id>http://zhenxingblog.site/posts/ea82bb07/</id>
+    <published>2021-02-12T14:22:21.000Z</published>
+    <updated>2021-03-02T09:58:16.169Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+
+&lt;h1 id=&quot;1-HTML文件模板&quot;&gt;&lt;a href=&quot;#1-HTML文件模板&quot; class=&quot;headerlink&quot; title=&quot;1. HTML文件模板&quot;&gt;&lt;/a&gt;1. HTML文件模板&lt;/h1&gt;&lt;figure</summary>
+        
+      
+    
+    
+    
+    <category term="WEB前端开发" scheme="http://zhenxingblog.site/categories/WEB%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="HTML" scheme="http://zhenxingblog.site/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://zhenxingblog.site/posts/4a17b156/"/>
+    <id>http://zhenxingblog.site/posts/4a17b156/</id>
+    <published>2021-02-12T06:55:33.228Z</published>
+    <updated>2021-02-26T13:26:54.827Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="markdown" scheme="http://zhenxingblog.site/categories/markdown/"/>
+    
+    
+    <category term="markdown" scheme="http://zhenxingblog.site/tags/markdown/"/>
+    
+  </entry>
+  
+</feed>

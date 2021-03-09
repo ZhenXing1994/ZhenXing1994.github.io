@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zhenxingblog.site","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="实现两种功能:利用轮询方式判断按键是否按下，短、长按，连发等功能的实现利用外部中断判断按键是否按下，获取按下时长">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ESP32_Interrupt">
+<meta property="og:url" content="http://zhenxingblog.site/posts/b8e6041e/index.html">
+<meta property="og:site_name" content="ZhenXing Blog">
+<meta property="og:description" content="实现两种功能:利用轮询方式判断按键是否按下，短、长按，连发等功能的实现利用外部中断判断按键是否按下，获取按下时长">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhenxingblog.site/posts/b8e6041e/USBLoadProgram.png">
+<meta property="og:image" content="http://zhenxingblog.site/posts/b8e6041e/KeyScan.png">
+<meta property="og:image" content="http://zhenxingblog.site/posts/b8e6041e/KEY_FIFO%E8%BD%AE%E8%AF%A2%E6%96%B9%E5%BC%8F.PNG">
+<meta property="article:published_time" content="2021-02-18T11:12:06.000Z">
+<meta property="article:modified_time" content="2021-02-26T13:26:54.823Z">
+<meta property="article:author" content="ZhenXing">
+<meta property="article:tag" content="ESP32">
+<meta property="article:tag" content="Interrupt">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhenxingblog.site/posts/b8e6041e/USBLoadProgram.png">
+
+<link rel="canonical" href="http://zhenxingblog.site/posts/b8e6041e/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ESP32_Interrupt | ZhenXing Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="ZhenXing Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ZhenXing Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">看山是山，看山不是山，看山还是山</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-top">
+
+    <a href="/top/" rel="section"><i class="fa fa-signal fa-fw"></i>热榜</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-read">
+
+    <a href="/reads/" rel="section"><i class="fa fa-book fa-fw"></i>阅读</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tools">
+
+    <a href="/tools/" rel="section"><i class="fa fa-rocket fa-fw"></i>实用工具</a>
+
+  </li>
+        <li class="menu-item menu-item-nexthelp">
+
+    <a href="/" rel="section"><i class="fa fa-book fa-fw"></i>NexT中文文档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zhenxingblog.site/posts/b8e6041e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ZhenXing">
+      <meta itemprop="description" content="个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhenXing Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ESP32_Interrupt
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-18 19:12:06" itemprop="dateCreated datePublished" datetime="2021-02-18T19:12:06+08:00">2021-02-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-26 21:26:54" itemprop="dateModified" datetime="2021-02-26T21:26:54+08:00">2021-02-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">单片机</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/posts/b8e6041e/" class="post-meta-item leancloud_visitors" data-flag-title="ESP32_Interrupt" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>实现两种功能:<br>利用轮询方式判断按键是否按下，短、长按，连发等功能的实现<br>利用外部中断判断按键是否按下，获取按下时长</p>
+<a id="more"></a>
+<h1 id="0-原理图"><a href="#0-原理图" class="headerlink" title="0.原理图"></a>0.原理图</h1><p><img src="/posts/b8e6041e/USBLoadProgram.png" alt="BootKey图片"></p>
+<p>BOOT KEY 作为本次实验对象</p>
+<h1 id="1-按键FIFO轮询采样"><a href="#1-按键FIFO轮询采样" class="headerlink" title="1.按键FIFO轮询采样"></a>1.按键FIFO轮询采样</h1><blockquote>
+<p>功能逻辑简图</p>
+</blockquote>
+<p><img src="/posts/b8e6041e/KeyScan.png" alt="KeyScan原理图片"></p>
+<ol>
+<li>定义按键FIFO缓冲区Buffer,10个字节大小,设计读/写指针:Read/Write</li>
+<li>定义按键结构体，实现按键防抖，长按识别，长按连发功能</li>
+<li>以10ms的间隔，扫描按键，并将按下、长按、弹起的键值用bsp_PutKey()放入Buffer中,而处理任务通过bspGetKey()获取键值，执行相应策略</li>
+</ol>
+<blockquote>
+<p>代码</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;freertos/FreeRTOS.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;freertos/task.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;driver/ledc.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;driver/gpio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;esp_err.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;esp_log.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;driver/adc.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;esp_adc_cal.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY_FIFO_SIZE 	10</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY_COUNT		1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY_FILTER_TIME 5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY_LONG_TIME   100 <span class="comment">/* 单位10ms， 持续1秒，认为长按事件 */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY1_Pin		0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span>&#123;</span></span><br><span class="line">	KEY_NONE = <span class="number">0</span>,</span><br><span class="line">	</span><br><span class="line">	K1_DOWN = <span class="number">1</span>,</span><br><span class="line">	K1_UP = <span class="number">2</span>,</span><br><span class="line">	K1_LONG = <span class="number">3</span>,</span><br><span class="line">&#125;KEY_VALUE_ENUM;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">	<span class="keyword">uint8_t</span> Buffer[KEY_FIFO_SIZE];</span><br><span class="line">	<span class="keyword">uint8_t</span> Read;</span><br><span class="line">	<span class="keyword">uint8_t</span> Write;</span><br><span class="line">&#125;KEY_FIFO_TYPE;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> KEY_FIFO_TYPE s_tKeyFIFO;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bsp_PutKey</span><span class="params">(<span class="keyword">uint8_t</span> keyCode)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	s_tKeyFIFO.Buffer[s_tKeyFIFO.Write] = keyCode;</span><br><span class="line">	<span class="keyword">if</span>(++s_tKeyFIFO.Write &gt;= KEY_FIFO_SIZE)</span><br><span class="line">	&#123;</span><br><span class="line">		s_tKeyFIFO.Write = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">uint8_t</span> <span class="title">bsp_GetKey</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">uint8_t</span> ret;</span><br><span class="line">	<span class="keyword">if</span>(s_tKeyFIFO.Read == s_tKeyFIFO.Write)</span><br><span class="line">	&#123;</span><br><span class="line">		ret = KEY_NONE;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		ret = s_tKeyFIFO.Buffer[s_tKeyFIFO.Read];</span><br><span class="line">		<span class="keyword">if</span>(++s_tKeyFIFO.Read&gt;=KEY_FIFO_SIZE)</span><br><span class="line">		&#123;</span><br><span class="line">			s_tKeyFIFO.Read=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">	<span class="keyword">uint8_t</span> (*IsKeyDownFunc)(<span class="keyword">void</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">uint8_t</span> FilterCount;		<span class="comment">// 滤波计数</span></span><br><span class="line">	<span class="keyword">uint16_t</span> LongCount;	<span class="comment">// 长按有效计数值</span></span><br><span class="line">	<span class="keyword">uint16_t</span> LongTime;	<span class="comment">// 按下持续时间，0:不检测长按</span></span><br><span class="line">	<span class="keyword">uint8_t</span> State;		<span class="comment">// 当前按键状态</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">uint8_t</span> RepeatSpeed;<span class="comment">// 连续按键周期</span></span><br><span class="line">	<span class="keyword">uint8_t</span> RepeatCount;<span class="comment">// 连续按键计数器</span></span><br><span class="line">&#125;KEY_TYPE;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> KEY_TYPE s_tBtn[KEY_COUNT];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">uint8_t</span> <span class="title">IsKeyDown1</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">uint8_t</span> flag=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(gpio_get_level(KEY1_Pin)==<span class="number">0</span>)</span><br><span class="line">		flag = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> flag;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bsp_InitKeyVar</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">uint8_t</span> i=<span class="number">0</span>;</span><br><span class="line">	s_tKeyFIFO.Read = <span class="number">0</span>;</span><br><span class="line">	s_tKeyFIFO.Write = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;KEY_COUNT;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		s_tBtn[i].LongTime = KEY_LONG_TIME;</span><br><span class="line">		s_tBtn[i].FilterCount = KEY_FILTER_TIME/<span class="number">2</span>;</span><br><span class="line">		s_tBtn[i].State = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		s_tBtn[i].RepeatSpeed = <span class="number">0</span>;</span><br><span class="line">		s_tBtn[i].RepeatCount = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	s_tBtn[<span class="number">0</span>].IsKeyDownFunc = IsKeyDown1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bsp_InitKeyHard</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 配置GPIO结构体</span></span><br><span class="line">	<span class="keyword">gpio_config_t</span> io_conf;</span><br><span class="line">	io_conf.intr_type = GPIO_INTR_ANYEDGE;		<span class="comment">// 下降沿和上升沿触发中断</span></span><br><span class="line">	io_conf.pin_bit_mask = <span class="number">1</span> &lt;&lt; KEY1_Pin;	<span class="comment">// 设置GPIO号</span></span><br><span class="line">	io_conf.mode = GPIO_MODE_INPUT;				<span class="comment">// 模式输入</span></span><br><span class="line">	io_conf.pull_up_en = GPIO_PULLUP_ENABLE;	<span class="comment">// 端口上拉使能</span></span><br><span class="line">	gpio_config(&amp;io_conf);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bsp_InitKey</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	bsp_InitKeyVar();</span><br><span class="line">	bsp_InitKeyHard();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bsp_DetectKey</span><span class="params">(<span class="keyword">uint8_t</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	KEY_TYPE *pBtn;</span><br><span class="line">	pBtn = &amp;s_tBtn[i];</span><br><span class="line">	<span class="keyword">if</span>(pBtn-&gt;IsKeyDownFunc())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 短按</span></span><br><span class="line">		<span class="keyword">if</span>(pBtn-&gt;FilterCount&lt;KEY_FILTER_TIME)</span><br><span class="line">		&#123;</span><br><span class="line">			pBtn-&gt;FilterCount = KEY_FILTER_TIME;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(pBtn-&gt;FilterCount&lt;<span class="number">2</span>*KEY_FILTER_TIME)</span><br><span class="line">		&#123;</span><br><span class="line">			pBtn-&gt;FilterCount++;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="comment">// 之前未按下</span></span><br><span class="line">			<span class="keyword">if</span>(pBtn-&gt;State==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				pBtn-&gt;State = <span class="number">1</span>;</span><br><span class="line">				bsp_PutKey((<span class="keyword">uint8_t</span>)(<span class="number">3</span>*i+<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="comment">// 1s以内无需处理</span></span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 如果支持长按</span></span><br><span class="line">			<span class="keyword">if</span>(pBtn-&gt;LongTime&gt;<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(pBtn-&gt;LongCount&lt;pBtn-&gt;LongTime)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="comment">// 单次长按</span></span><br><span class="line">					<span class="keyword">if</span>(++pBtn-&gt;LongCount==pBtn-&gt;LongTime)</span><br><span class="line">					&#123;</span><br><span class="line">						bsp_PutKey((<span class="keyword">uint8_t</span>)(<span class="number">3</span>*i+<span class="number">3</span>));</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="comment">// 超出长按阈值--&gt;&gt;&gt;连发</span></span><br><span class="line">					<span class="keyword">if</span>(pBtn-&gt;RepeatSpeed&gt;<span class="number">0</span>)</span><br><span class="line">					&#123;</span><br><span class="line">						<span class="keyword">if</span>(++pBtn-&gt;RepeatCount&gt;=pBtn-&gt;RepeatSpeed)</span><br><span class="line">						&#123;</span><br><span class="line">							pBtn-&gt;RepeatCount=<span class="number">0</span>;</span><br><span class="line">							bsp_PutKey((<span class="keyword">uint8_t</span>)(<span class="number">3</span>*i+<span class="number">1</span>));</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="comment">// 判断按键是否弹起</span></span><br><span class="line">		<span class="keyword">if</span>(pBtn-&gt;FilterCount&gt;KEY_FILTER_TIME)&#123;</span><br><span class="line">			pBtn-&gt;FilterCount=KEY_FILTER_TIME;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(pBtn-&gt;FilterCount!=<span class="number">0</span>)&#123;</span><br><span class="line">			pBtn-&gt;FilterCount--;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(pBtn-&gt;State==<span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				pBtn-&gt;State = <span class="number">0</span>;</span><br><span class="line">				bsp_PutKey((<span class="keyword">uint8_t</span>)(<span class="number">3</span>*i+<span class="number">2</span>));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		pBtn-&gt;LongCount=<span class="number">0</span>;</span><br><span class="line">		pBtn-&gt;RepeatCount=<span class="number">0</span>;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bsp_KeyScan</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">uint8_t</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;KEY_COUNT;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		bsp_DetectKey(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 任务优先级: 4</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TSK_KeyScan10ms</span><span class="params">(<span class="keyword">void</span> *arg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(;;)</span><br><span class="line">	&#123;</span><br><span class="line">		bsp_KeyScan();</span><br><span class="line">		vTaskDelay(<span class="number">10</span> / portTICK_PERIOD_MS);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TSK_UserIF</span></span><br><span class="line"><span class="comment">// 接口消息处理(获取键值，LED等闪烁)</span></span><br><span class="line"><span class="comment">// 优先级:1</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TSK_UserIF</span><span class="params">(<span class="keyword">void</span> *arg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(;;)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">uint8_t</span> val = bsp_GetKey();</span><br><span class="line">		<span class="keyword">if</span>(val!=<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">switch</span>(val)</span><br><span class="line">			&#123;</span><br><span class="line">			<span class="keyword">case</span> K1_DOWN:</span><br><span class="line">				ESP_LOGI(<span class="string">&quot;KEY查询方式&quot;</span>, <span class="string">&quot;按键按下,输入键值:%d&quot;</span>,val);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> K1_UP:</span><br><span class="line">				ESP_LOGI(<span class="string">&quot;KEY查询方式&quot;</span>, <span class="string">&quot;按键弹起,输入键值:%d&quot;</span>,val);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> K1_LONG:</span><br><span class="line">				ESP_LOGI(<span class="string">&quot;KEY查询方式&quot;</span>, <span class="string">&quot;按键长按,输入键值:%d&quot;</span>,val);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		vTaskDelay(<span class="number">500</span> / portTICK_PERIOD_MS);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">app_main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ESP_LOGW(<span class="string">&quot;KEY查询方式&quot;</span>,<span class="string">&quot;&gt;&gt;&gt;&gt;==== GPIO初始化... ====&lt;&lt;&lt;&lt;&quot;</span>);</span><br><span class="line">	bsp_InitKey();</span><br><span class="line">	ESP_LOGW(<span class="string">&quot;KEY查询方式&quot;</span>,<span class="string">&quot;&gt;&gt;&gt;&gt;==== 创建KEY轮询任务... ====&lt;&lt;&lt;&lt;&quot;</span>);</span><br><span class="line">	xTaskCreate(TSK_KeyScan10ms,<span class="string">&quot;KeyScan&quot;</span>,<span class="number">1024</span>*<span class="number">2</span>,<span class="literal">NULL</span>,<span class="number">4</span>,<span class="literal">NULL</span>);</span><br><span class="line">	xTaskCreate(TSK_UserIF,<span class="string">&quot;Task_LOG&quot;</span>,<span class="number">1024</span>*<span class="number">2</span>,<span class="literal">NULL</span>,<span class="number">1</span>,<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>效果</p>
+</blockquote>
+<p><img src="/posts/b8e6041e/KEY_FIFO%E8%BD%AE%E8%AF%A2%E6%96%B9%E5%BC%8F.PNG" alt="KEY查询采样"></p>
+<h1 id="2-中断方式"><a href="#2-中断方式" class="headerlink" title="2.中断方式"></a>2.中断方式</h1>
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章推荐</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\posts\4a89b3b9\" rel="bookmark">ESP32_ADC</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\posts\c52e8408\" rel="bookmark">ESP32_LED</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\posts\d213032\" rel="bookmark">ESP32_LEDC_PWM</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\posts\209c3d55\" rel="bookmark">ESP32开发板介绍</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\posts\dd7e10ee\" rel="bookmark">ESP32打印日志</a></div>
+    </li>
+  </ul>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ZhenXing
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://zhenxingblog.site/posts/b8e6041e/" title="ESP32_Interrupt">http://zhenxingblog.site/posts/b8e6041e/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ESP32/" rel="tag"><i class="fa fa-tag"></i> ESP32</a>
+              <a href="/tags/Interrupt/" rel="tag"><i class="fa fa-tag"></i> Interrupt</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/4a89b3b9/" rel="prev" title="ESP32_ADC">
+      <i class="fa fa-chevron-left"></i> ESP32_ADC
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/fd577013/" rel="next" title="Reinforcement Learning And optimal adaptive control">
+      Reinforcement Learning And optimal adaptive control <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-%E5%8E%9F%E7%90%86%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">0.原理图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E6%8C%89%E9%94%AEFIFO%E8%BD%AE%E8%AF%A2%E9%87%87%E6%A0%B7"><span class="nav-number">2.</span> <span class="nav-text">1.按键FIFO轮询采样</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">2.中断方式</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ZhenXing"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ZhenXing</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhenXing1994" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhenXing1994" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zx.xia@cumt.edu.cn" title="E-Mail → mailto:zx.xia@cumt.edu.cn" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/qq.jpg" title="qq → &#x2F;images&#x2F;qq.jpg"><i class="fab fa-qq fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/weixin.jpg" title="weixin → &#x2F;images&#x2F;weixin.jpg"><i class="fab fa-weixin fa-fw"></i></a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://tding.top/" title="https:&#x2F;&#x2F;tding.top" rel="noopener external nofollow noreferrer" target="_blank">小丁Blog</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dzyblog.site/" title="https:&#x2F;&#x2F;dzyblog.site" rel="noopener external nofollow noreferrer" target="_blank">DzyBlog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZhenXing</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">51k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">46 分钟</span>
+</div>
+<div>
+  <a target="_blank" rel="noopener external nofollow noreferrer" href="http://beian.miit.gov.cn/">苏ICP备2021007468号</a> 
+</div>
+
+        
+
+
+
+
+
+
+<script>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.id);
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            let target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"UqFccNjTsgx8NWlp14IDF1a7-gzGzoHsz","app_key":"d7nskRS7X1aPlkfi4SpmcaMx","server_url":null,"security":true};
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
