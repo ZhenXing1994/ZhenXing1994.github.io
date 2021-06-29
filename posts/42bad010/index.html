@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zhenxingblog.site","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="MOSFET使用注意事项">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MOSFET电气元件">
+<meta property="og:url" content="http://zhenxingblog.site/posts/42bad010/index.html">
+<meta property="og:site_name" content="ZhenXing Blog">
+<meta property="og:description" content="MOSFET使用注意事项">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhenxingblog.site/posts/42bad010/ID.PNG">
+<meta property="og:image" content="http://zhenxingblog.site/posts/42bad010/VDSS.PNG">
+<meta property="og:image" content="http://zhenxingblog.site/posts/42bad010/%E7%94%B5%E6%BA%90%E9%98%B2%E5%8F%8D%E6%8E%A5.PNG">
+<meta property="og:image" content="http://zhenxingblog.site/posts/42bad010/PMOS_USB%E9%98%B2%E5%8F%8D%E5%86%B2.PNG">
+<meta property="article:published_time" content="2021-03-14T01:48:05.000Z">
+<meta property="article:modified_time" content="2021-05-06T09:42:43.287Z">
+<meta property="article:author" content="ZhenXing">
+<meta property="article:tag" content="MOSFET">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhenxingblog.site/posts/42bad010/ID.PNG">
+
+<link rel="canonical" href="http://zhenxingblog.site/posts/42bad010/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>MOSFET电气元件 | ZhenXing Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="ZhenXing Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ZhenXing Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">看山是山，看山不是山，看山还是山</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-top">
+
+    <a href="/top/" rel="section"><i class="fa fa-signal fa-fw"></i>热榜</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">30</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">10</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">23</span></a>
+
+  </li>
+        <li class="menu-item menu-item-read">
+
+    <a href="/reads/" rel="section"><i class="fa fa-book fa-fw"></i>阅读</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tools">
+
+    <a href="/tools/" rel="section"><i class="fa fa-rocket fa-fw"></i>实用工具</a>
+
+  </li>
+        <li class="menu-item menu-item-nexthelp">
+
+    <a href="/" rel="section"><i class="fa fa-book fa-fw"></i>NexT中文文档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zhenxingblog.site/posts/42bad010/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ZhenXing">
+      <meta itemprop="description" content="个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhenXing Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MOSFET电气元件
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-14 09:48:05" itemprop="dateCreated datePublished" datetime="2021-03-14T09:48:05+08:00">2021-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-06 17:42:43" itemprop="dateModified" datetime="2021-05-06T17:42:43+08:00">2021-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hardware/" itemprop="url" rel="index"><span itemprop="name">Hardware</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/posts/42bad010/" class="post-meta-item leancloud_visitors" data-flag-title="MOSFET电气元件" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>687</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>MOSFET使用注意事项</p>
+<a id="more"></a>
+
+<h1 id="MOSFET介绍"><a href="#MOSFET介绍" class="headerlink" title="MOSFET介绍"></a>MOSFET介绍</h1><h1 id="1-1-MOSFET作为开关管使用"><a href="#1-1-MOSFET作为开关管使用" class="headerlink" title="1.1 MOSFET作为开关管使用"></a>1.1 MOSFET作为开关管使用</h1><p>箭头流入G极的是 NMOSFET<br>箭头流出G极的是 PMOSFET<br>上述箭头无论流入/出 都是S极(源)</p>
+<p>PMOS: VGS=0 导通 VGS=1 截止<br>NMOS: VGS=0 截止 VGS=1 导通</p>
+<h2 id="1-2-性能指标"><a href="#1-2-性能指标" class="headerlink" title="1.2 性能指标"></a>1.2 性能指标</h2><blockquote>
+<p>VDSS最大漏-源电压</p>
+</blockquote>
+<p>漏极与源极之间的最大压差，否者会发生雪崩击穿</p>
+<blockquote>
+<p>VGS最大栅-源电压</p>
+</blockquote>
+<p>栅-源两级之间最大压差，<font color="red">可以在GS之间并联一个稳压二极管或单相/双向TVS管</font></p>
+<blockquote>
+<p>ID 连续漏电电流</p>
+</blockquote>
+<p>MOS管在正常温度下，可允许通过的最大电流</p>
+<blockquote>
+<p>VGS(th) 栅-源电压阈值</p>
+</blockquote>
+<p>MOSFET导通时使用的最小阈值</p>
+<blockquote>
+<p>RDS(on) 导通电阻</p>
+</blockquote>
+<p>漏-源电阻</p>
+<blockquote>
+<p>Ciss:输入电容</p>
+</blockquote>
+<p>将DS短接，用交流信号测得GS之间的电容(即Ciss=Cgs+Cgd),寄生电容充放电会对MOSFET开断延时有影响</p>
+<blockquote>
+<p>Qgs、Qgd和Qg</p>
+</blockquote>
+<p>各个电极之间的电荷</p>
+<h2 id="1-3-IRF7480MTRPbF-DirectFET®-N-Channel-Power-MOSFET"><a href="#1-3-IRF7480MTRPbF-DirectFET®-N-Channel-Power-MOSFET" class="headerlink" title="1.3 IRF7480MTRPbF:DirectFET® N-Channel Power MOSFET"></a>1.3 IRF7480MTRPbF:DirectFET® N-Channel Power MOSFET</h2><blockquote>
+<p>芯片手册参数</p>
+</blockquote>
+<p><img src="/posts/42bad010/ID.PNG" alt="ID&amp;VGS(max)"></p>
+<p><img src="/posts/42bad010/VDSS.PNG" alt="ID&amp;VGS(max)"></p>
+<p>设计电路主要主意:</p>
+<ul>
+<li>VDSS不能超过40V,为保留一定裕度，两端电压不能超过24V</li>
+<li>ID=137A,流过电流不能操作100A</li>
+<li>VGS=[-20,20V],栅源之间电压不能超过20V，可以考虑添加双向TVS</li>
+<li>VGS(th)=3V，MOS驱动芯片的输出电压能力要大于3V</li>
+<li>相同型号MOS并联，可增大一倍ID电流</li>
+<li>RDS=1.2m欧</li>
+</ul>
+<h1 id="2-电路应用"><a href="#2-电路应用" class="headerlink" title="2. 电路应用"></a>2. 电路应用</h1><h2 id="2-1-电源防反插-PMOS"><a href="#2-1-电源防反插-PMOS" class="headerlink" title="2.1 电源防反插(PMOS)"></a>2.1 电源防反插(PMOS)</h2><p><img src="/posts/42bad010/%E7%94%B5%E6%BA%90%E9%98%B2%E5%8F%8D%E6%8E%A5.PNG" alt="电源防反插"></p>
+<h2 id="2-2-双电源供电-USB防反冲"><a href="#2-2-双电源供电-USB防反冲" class="headerlink" title="2.2 双电源供电-USB防反冲"></a>2.2 双电源供电-USB防反冲</h2><p><img src="/posts/42bad010/PMOS_USB%E9%98%B2%E5%8F%8D%E5%86%B2.PNG" alt="PMOS_USB防反冲电流"></p>
+<h2 id="2-3-常用MOSFET"><a href="#2-3-常用MOSFET" class="headerlink" title="2.3 常用MOSFET"></a>2.3 常用MOSFET</h2><ul>
+<li>IRF540</li>
+<li>IRF640</li>
+<li>IRF840</li>
+<li>SI2301</li>
+<li>SI2302</li>
+</ul>
+<h2 id="电气元件3D模型"><a href="#电气元件3D模型" class="headerlink" title="电气元件3D模型"></a>电气元件3D模型</h2><p><a target="_blank" rel="noopener" href="https://www.snapeda.com/">SnapEDA</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.3dcontentcentral.com/">3dcontentcentral</a></p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章推荐</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\posts\24b120d3\" rel="bookmark">开关电源</a></div>
+    </li>
+  </ul>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ZhenXing
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://zhenxingblog.site/posts/42bad010/" title="MOSFET电气元件">http://zhenxingblog.site/posts/42bad010/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MOSFET/" rel="tag"><i class="fa fa-tag"></i> MOSFET</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/556d494c/" rel="prev" title="Stopwatch使用">
+      <i class="fa fa-chevron-left"></i> Stopwatch使用
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/fab98bd8/" rel="next" title="电阻电容电感">
+      电阻电容电感 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MOSFET%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">MOSFET介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-1-MOSFET%E4%BD%9C%E4%B8%BA%E5%BC%80%E5%85%B3%E7%AE%A1%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">1.1 MOSFET作为开关管使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="nav-number">2.1.</span> <span class="nav-text">1.2 性能指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-IRF7480MTRPbF-DirectFET%C2%AE-N-Channel-Power-MOSFET"><span class="nav-number">2.2.</span> <span class="nav-text">1.3 IRF7480MTRPbF:DirectFET® N-Channel Power MOSFET</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E7%94%B5%E8%B7%AF%E5%BA%94%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">2. 电路应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E7%94%B5%E6%BA%90%E9%98%B2%E5%8F%8D%E6%8F%92-PMOS"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 电源防反插(PMOS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%8F%8C%E7%94%B5%E6%BA%90%E4%BE%9B%E7%94%B5-USB%E9%98%B2%E5%8F%8D%E5%86%B2"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 双电源供电-USB防反冲</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%B8%B8%E7%94%A8MOSFET"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 常用MOSFET</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E6%B0%94%E5%85%83%E4%BB%B63D%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.4.</span> <span class="nav-text">电气元件3D模型</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ZhenXing"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ZhenXing</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhenXing1994" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhenXing1994" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zx.xia@cumt.edu.cn" title="E-Mail → mailto:zx.xia@cumt.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/qq.jpg" title="qq → &#x2F;images&#x2F;qq.jpg"><i class="fab fa-qq fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/weixin.jpg" title="weixin → &#x2F;images&#x2F;weixin.jpg"><i class="fab fa-weixin fa-fw"></i></a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://tding.top/" title="https:&#x2F;&#x2F;tding.top" rel="noopener" target="_blank">小丁Blog</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dzyblog.site/" title="https:&#x2F;&#x2F;dzyblog.site" rel="noopener" target="_blank">DzyBlog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZhenXing</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">77k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:10</span>
+</div>
+<div>
+  <a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">苏ICP备2021007468号</a> 
+</div>
+
+        
+
+
+
+
+
+
+<script>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.id);
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            let target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"UqFccNjTsgx8NWlp14IDF1a7-gzGzoHsz","app_key":"d7nskRS7X1aPlkfi4SpmcaMx","server_url":null,"security":true};
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

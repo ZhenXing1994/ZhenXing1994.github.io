@@ -6,7 +6,7 @@
   <link href="http://zhenxingblog.site/atom.xml" rel="self"/>
   
   <link href="http://zhenxingblog.site/"/>
-  <updated>2021-03-09T03:05:23.283Z</updated>
+  <updated>2021-02-26T13:26:54.827Z</updated>
   <id>http://zhenxingblog.site/</id>
   
   <author>
@@ -15,6 +15,206 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://zhenxingblog.site/posts/4a17b156/"/>
+    <id>http://zhenxingblog.site/posts/4a17b156/</id>
+    <published>2021-06-29T03:08:55.249Z</published>
+    <updated>2021-02-26T13:26:54.827Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="markdown" scheme="http://zhenxingblog.site/categories/markdown/"/>
+    
+    
+    <category term="markdown" scheme="http://zhenxingblog.site/tags/markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FM4时钟单元</title>
+    <link href="http://zhenxingblog.site/posts/undefined/"/>
+    <id>http://zhenxingblog.site/posts/undefined/</id>
+    <published>2021-06-11T11:46:28.000Z</published>
+    <updated>2021-06-13T12:06:08.913Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;FM4单片机时钟介绍&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="FM4" scheme="http://zhenxingblog.site/categories/FM4/"/>
+    
+    
+    <category term="ARM" scheme="http://zhenxingblog.site/tags/ARM/"/>
+    
+    <category term="Cortex-M4" scheme="http://zhenxingblog.site/tags/Cortex-M4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity3D物理引擎</title>
+    <link href="http://zhenxingblog.site/posts/undefined/"/>
+    <id>http://zhenxingblog.site/posts/undefined/</id>
+    <published>2021-05-28T11:07:10.000Z</published>
+    <updated>2021-06-29T03:42:17.066Z</updated>
+    
+    
+    <summary type="html">这里有东西被加密了，需要输入密码查看哦。</summary>
+    
+    
+    
+    <category term="Unity3D" scheme="http://zhenxingblog.site/categories/Unity3D/"/>
+    
+    
+    <category term="3D" scheme="http://zhenxingblog.site/tags/3D/"/>
+    
+    <category term="物理引擎" scheme="http://zhenxingblog.site/tags/%E7%89%A9%E7%90%86%E5%BC%95%E6%93%8E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Trilib插件使用</title>
+    <link href="http://zhenxingblog.site/posts/undefined/"/>
+    <id>http://zhenxingblog.site/posts/undefined/</id>
+    <published>2021-05-24T08:49:03.000Z</published>
+    <updated>2021-05-24T10:00:09.881Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Trilib插件为Unity3D的付费插件，可实现Unity程序运行状态下，从程序外部动态加载数模。支持FBX, OBJ, GLTF2, STL, PLY, 3MF以及ZIP等文件。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Unity3D" scheme="http://zhenxingblog.site/categories/Unity3D/"/>
+    
+    
+    <category term="3D" scheme="http://zhenxingblog.site/tags/3D/"/>
+    
+    <category term="FBX模型动态加载" scheme="http://zhenxingblog.site/tags/FBX%E6%A8%A1%E5%9E%8B%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>开关电源</title>
+    <link href="http://zhenxingblog.site/posts/24b120d3/"/>
+    <id>http://zhenxingblog.site/posts/24b120d3/</id>
+    <published>2021-05-20T08:27:17.000Z</published>
+    <updated>2021-05-21T08:48:07.583Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;开关电源设计介绍&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Hardware" scheme="http://zhenxingblog.site/categories/Hardware/"/>
+    
+    
+    <category term="开关电源" scheme="http://zhenxingblog.site/tags/%E5%BC%80%E5%85%B3%E7%94%B5%E6%BA%90/"/>
+    
+    <category term="Buck" scheme="http://zhenxingblog.site/tags/Buck/"/>
+    
+    <category term="Boost" scheme="http://zhenxingblog.site/tags/Boost/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Qt项目配置文件pro和pri介绍</title>
+    <link href="http://zhenxingblog.site/posts/e6f2032/"/>
+    <id>http://zhenxingblog.site/posts/e6f2032/</id>
+    <published>2021-05-08T02:55:31.000Z</published>
+    <updated>2021-05-20T08:32:43.930Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;QT工程管理文件配置介绍&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="单片机" scheme="http://zhenxingblog.site/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+    <category term="ESP32" scheme="http://zhenxingblog.site/tags/ESP32/"/>
+    
+    <category term="LED" scheme="http://zhenxingblog.site/tags/LED/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>1.RobotArm坐标变换</title>
+    <link href="http://zhenxingblog.site/posts/3be36776/"/>
+    <id>http://zhenxingblog.site/posts/3be36776/</id>
+    <published>2021-05-06T09:09:31.000Z</published>
+    <updated>2021-05-06T13:53:16.045Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;机械臂关节坐标变换介绍&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="机器人学" scheme="http://zhenxingblog.site/categories/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6/"/>
+    
+    
+    <category term="机械臂" scheme="http://zhenxingblog.site/tags/%E6%9C%BA%E6%A2%B0%E8%87%82/"/>
+    
+    <category term="坐标变换" scheme="http://zhenxingblog.site/tags/%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript</title>
+    <link href="http://zhenxingblog.site/posts/cc1b9611/"/>
+    <id>http://zhenxingblog.site/posts/cc1b9611/</id>
+    <published>2021-03-23T12:44:03.000Z</published>
+    <updated>2021-05-06T09:11:44.914Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;JavaScript脚本入门&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="WEB前端开发" scheme="http://zhenxingblog.site/categories/WEB%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="JavaScript" scheme="http://zhenxingblog.site/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>电阻电容电感</title>
+    <link href="http://zhenxingblog.site/posts/fab98bd8/"/>
+    <id>http://zhenxingblog.site/posts/fab98bd8/</id>
+    <published>2021-03-14T03:05:38.000Z</published>
+    <updated>2021-06-29T03:29:58.035Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;电阻电容电感使用&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MOSFET电气元件</title>
+    <link href="http://zhenxingblog.site/posts/42bad010/"/>
+    <id>http://zhenxingblog.site/posts/42bad010/</id>
+    <published>2021-03-14T01:48:05.000Z</published>
+    <updated>2021-05-06T09:42:43.287Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;MOSFET使用注意事项&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Hardware" scheme="http://zhenxingblog.site/categories/Hardware/"/>
+    
+    
+    <category term="MOSFET" scheme="http://zhenxingblog.site/tags/MOSFET/"/>
+    
+  </entry>
   
   <entry>
     <title>Stopwatch使用</title>
@@ -63,7 +263,7 @@
     <link href="http://zhenxingblog.site/posts/cd86acaf/"/>
     <id>http://zhenxingblog.site/posts/cd86acaf/</id>
     <published>2021-03-02T07:18:14.000Z</published>
-    <updated>2021-03-06T14:09:23.029Z</updated>
+    <updated>2021-03-14T02:44:15.694Z</updated>
     
     
     <summary type="html">&lt;p&gt;在WEB前端开发中，采用&lt;code&gt;&amp;lt;Talbe/&amp;gt;&lt;/code&gt;布局并不是太灵活，一般采用DIV+CSS方式进行布局。&lt;/p&gt;</summary>
@@ -217,86 +417,6 @@
     <category term="Hexo" scheme="http://zhenxingblog.site/tags/Hexo/"/>
     
     <category term="插件" scheme="http://zhenxingblog.site/tags/%E6%8F%92%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ESP32打印日志</title>
-    <link href="http://zhenxingblog.site/posts/dd7e10ee/"/>
-    <id>http://zhenxingblog.site/posts/dd7e10ee/</id>
-    <published>2021-02-17T09:37:53.000Z</published>
-    <updated>2021-02-26T13:26:54.826Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;ESP32日志报文打印API测试，掌握Debug,Info,Warn以及Error四种日志报文输出，获取ESP32芯片相关信息并打印输出&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="单片机" scheme="http://zhenxingblog.site/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
-    
-    
-    <category term="ESP32" scheme="http://zhenxingblog.site/tags/ESP32/"/>
-    
-    <category term="打印日志信息" scheme="http://zhenxingblog.site/tags/%E6%89%93%E5%8D%B0%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ESP32开发板介绍</title>
-    <link href="http://zhenxingblog.site/posts/209c3d55/"/>
-    <id>http://zhenxingblog.site/posts/209c3d55/</id>
-    <published>2021-02-16T15:42:15.000Z</published>
-    <updated>2021-02-26T13:26:54.825Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;购买ESP32开发板,掌握ESP32开发环境，API调用，主要为了熟悉并掌握MQTT功能，开发板购买链接如下:&lt;br&gt;&lt;a&gt;&lt;a href=&quot;https://item.taobao.com/item.htm?spm=a2oq0.12575281.0.0.50111deb2Ij1As&amp;amp;ft=t&amp;amp;id=626366733674&quot;&gt;https://item.taobao.com/item.htm?spm=a2oq0.12575281.0.0.50111deb2Ij1As&amp;amp;ft=t&amp;amp;id=626366733674&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="单片机" scheme="http://zhenxingblog.site/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
-    
-    
-    <category term="ESP32" scheme="http://zhenxingblog.site/tags/ESP32/"/>
-    
-    <category term="硬件" scheme="http://zhenxingblog.site/tags/%E7%A1%AC%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTML入门笔记</title>
-    <link href="http://zhenxingblog.site/posts/ea82bb07/"/>
-    <id>http://zhenxingblog.site/posts/ea82bb07/</id>
-    <published>2021-02-12T14:22:21.000Z</published>
-    <updated>2021-03-09T07:41:36.415Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;HTML基本语法&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="WEB前端开发" scheme="http://zhenxingblog.site/categories/WEB%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="HTML" scheme="http://zhenxingblog.site/tags/HTML/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://zhenxingblog.site/posts/4a17b156/"/>
-    <id>http://zhenxingblog.site/posts/4a17b156/</id>
-    <published>2021-02-12T06:55:33.228Z</published>
-    <updated>2021-02-26T13:26:54.827Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="markdown" scheme="http://zhenxingblog.site/categories/markdown/"/>
-    
-    
-    <category term="markdown" scheme="http://zhenxingblog.site/tags/markdown/"/>
     
   </entry>
   

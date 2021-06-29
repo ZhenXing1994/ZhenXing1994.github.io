@@ -1,33 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/posts/4a17b156/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p><img src="/posts/4a17b156/islands.jpeg" alt="风景"></p>
-<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>** argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Hello World&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>markdown</category>
-      </categories>
-      <tags>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Reinforcement Learning And optimal adaptive control</title>
-    <url>/posts/fd577013/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>Monitor和Lock区别</title>
     <url>/posts/9d3dd46f/</url>
     <content><![CDATA[<p>Lock和Monitor没区别，简单来讲Lock是Monitor的进一步封装<br>锁定的目的：由于多个线程并行/并发处理同一个“数据对象”（比如：在其它线程的某个地方发生了Clear、Add、Remove、Change等操作），导致“数据对象”不断变化，没法用了，所以，为了保证数据在某个计算时刻的“恒定”，使用排它锁将“数据对象”锁定，然后就视该“数据对象”为“一个恒定量”进行逻辑处理。</p>
@@ -153,6 +126,11 @@
         <tag>C#</tag>
         <tag>时间检测</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning And optimal adaptive control</title>
+    <url>/posts/fd577013/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>01.DotNet Core Blog:基于EFCore数据库设计与开发</title>
@@ -846,6 +824,204 @@
       </tags>
   </entry>
   <entry>
+    <title>MOSFET电气元件</title>
+    <url>/posts/42bad010/</url>
+    <content><![CDATA[<p>MOSFET使用注意事项</p>
+<a id="more"></a>
+
+<h1 id="MOSFET介绍"><a href="#MOSFET介绍" class="headerlink" title="MOSFET介绍"></a>MOSFET介绍</h1><h1 id="1-1-MOSFET作为开关管使用"><a href="#1-1-MOSFET作为开关管使用" class="headerlink" title="1.1 MOSFET作为开关管使用"></a>1.1 MOSFET作为开关管使用</h1><p>箭头流入G极的是 NMOSFET<br>箭头流出G极的是 PMOSFET<br>上述箭头无论流入/出 都是S极(源)</p>
+<p>PMOS: VGS=0 导通 VGS=1 截止<br>NMOS: VGS=0 截止 VGS=1 导通</p>
+<h2 id="1-2-性能指标"><a href="#1-2-性能指标" class="headerlink" title="1.2 性能指标"></a>1.2 性能指标</h2><blockquote>
+<p>VDSS最大漏-源电压</p>
+</blockquote>
+<p>漏极与源极之间的最大压差，否者会发生雪崩击穿</p>
+<blockquote>
+<p>VGS最大栅-源电压</p>
+</blockquote>
+<p>栅-源两级之间最大压差，<font color="red">可以在GS之间并联一个稳压二极管或单相/双向TVS管</font></p>
+<blockquote>
+<p>ID 连续漏电电流</p>
+</blockquote>
+<p>MOS管在正常温度下，可允许通过的最大电流</p>
+<blockquote>
+<p>VGS(th) 栅-源电压阈值</p>
+</blockquote>
+<p>MOSFET导通时使用的最小阈值</p>
+<blockquote>
+<p>RDS(on) 导通电阻</p>
+</blockquote>
+<p>漏-源电阻</p>
+<blockquote>
+<p>Ciss:输入电容</p>
+</blockquote>
+<p>将DS短接，用交流信号测得GS之间的电容(即Ciss=Cgs+Cgd),寄生电容充放电会对MOSFET开断延时有影响</p>
+<blockquote>
+<p>Qgs、Qgd和Qg</p>
+</blockquote>
+<p>各个电极之间的电荷</p>
+<h2 id="1-3-IRF7480MTRPbF-DirectFET®-N-Channel-Power-MOSFET"><a href="#1-3-IRF7480MTRPbF-DirectFET®-N-Channel-Power-MOSFET" class="headerlink" title="1.3 IRF7480MTRPbF:DirectFET® N-Channel Power MOSFET"></a>1.3 IRF7480MTRPbF:DirectFET® N-Channel Power MOSFET</h2><blockquote>
+<p>芯片手册参数</p>
+</blockquote>
+<p><img src="/posts/42bad010/ID.PNG" alt="ID&amp;VGS(max)"></p>
+<p><img src="/posts/42bad010/VDSS.PNG" alt="ID&amp;VGS(max)"></p>
+<p>设计电路主要主意:</p>
+<ul>
+<li>VDSS不能超过40V,为保留一定裕度，两端电压不能超过24V</li>
+<li>ID=137A,流过电流不能操作100A</li>
+<li>VGS=[-20,20V],栅源之间电压不能超过20V，可以考虑添加双向TVS</li>
+<li>VGS(th)=3V，MOS驱动芯片的输出电压能力要大于3V</li>
+<li>相同型号MOS并联，可增大一倍ID电流</li>
+<li>RDS=1.2m欧</li>
+</ul>
+<h1 id="2-电路应用"><a href="#2-电路应用" class="headerlink" title="2. 电路应用"></a>2. 电路应用</h1><h2 id="2-1-电源防反插-PMOS"><a href="#2-1-电源防反插-PMOS" class="headerlink" title="2.1 电源防反插(PMOS)"></a>2.1 电源防反插(PMOS)</h2><p><img src="/posts/42bad010/%E7%94%B5%E6%BA%90%E9%98%B2%E5%8F%8D%E6%8E%A5.PNG" alt="电源防反插"></p>
+<h2 id="2-2-双电源供电-USB防反冲"><a href="#2-2-双电源供电-USB防反冲" class="headerlink" title="2.2 双电源供电-USB防反冲"></a>2.2 双电源供电-USB防反冲</h2><p><img src="/posts/42bad010/PMOS_USB%E9%98%B2%E5%8F%8D%E5%86%B2.PNG" alt="PMOS_USB防反冲电流"></p>
+<h2 id="2-3-常用MOSFET"><a href="#2-3-常用MOSFET" class="headerlink" title="2.3 常用MOSFET"></a>2.3 常用MOSFET</h2><ul>
+<li>IRF540</li>
+<li>IRF640</li>
+<li>IRF840</li>
+<li>SI2301</li>
+<li>SI2302</li>
+</ul>
+<h2 id="电气元件3D模型"><a href="#电气元件3D模型" class="headerlink" title="电气元件3D模型"></a>电气元件3D模型</h2><p><a href="https://www.snapeda.com/">SnapEDA</a></p>
+<p><a href="https://www.3dcontentcentral.com/">3dcontentcentral</a></p>
+]]></content>
+      <categories>
+        <category>Hardware</category>
+      </categories>
+      <tags>
+        <tag>MOSFET</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开关电源</title>
+    <url>/posts/24b120d3/</url>
+    <content><![CDATA[<p>开关电源设计介绍</p>
+<a id="more"></a>
+
+<h1 id="1-Buck-amp-Boost-降压-amp-升压电路"><a href="#1-Buck-amp-Boost-降压-amp-升压电路" class="headerlink" title="1.Buck &amp; Boost 降压 &amp; 升压电路"></a>1.Buck &amp; Boost 降压 &amp; 升压电路</h1><h2 id="1-1-工作原理图"><a href="#1-1-工作原理图" class="headerlink" title="1.1 工作原理图"></a>1.1 工作原理图</h2><blockquote>
+<p>Buck降压原理图</p>
+</blockquote>
+<p><img src="/posts/24b120d3/1_Buck%E5%8E%9F%E7%90%86%E5%9B%BE.PNG" alt="Buck降压原理图"></p>
+
+\[{V_{out}} = {V_{in}}*\frac{{{T_{on}}}}{T}\]
+
+
+<blockquote>
+<p>Boost升压原理图</p>
+</blockquote>
+<p><img src="/posts/24b120d3/2_Boost%E5%8E%9F%E7%90%86%E5%9B%BE.PNG" alt="Boost升压原理图"></p>
+
+\[{U_o} = {U_i}/(1 - \frac{{{T_{on}}}}{{{T_{on}} + {T_{off}}}})\]
+
+
+
+
+<blockquote>
+<p>Buck-Boost 降压-升压原理图</p>
+</blockquote>
+<p><img src="/posts/24b120d3/3_Buck_Boost%E5%8E%9F%E7%90%86%E5%9B%BE.PNG" alt="Buck&amp;Boost降压&amp;升压原理图"></p>
+
+\[{U_o} = {U_i}*\frac{{T_{on}^1}}{{T_{on}^1 + T_{off}^1}}/(1 - \frac{{T_{on}^2}}{{T_{on}^2 + T_{off}^2}})\]
+
+
+<h2 id="1-2-开关电源的基本元件"><a href="#1-2-开关电源的基本元件" class="headerlink" title="1.2 开关电源的基本元件"></a>1.2 开关电源的基本元件</h2><div class="note primary">
+            <p>1.电子开关</p>
+          </div>
+
+<ul>
+<li>三极管/IGBT/NMOS,以后趋势:NMOS</li>
+<li>内置NMOS:Iout&lt;5A</li>
+<li>外置NMOS:NMOS可并联使用，从而提高电流</li>
+</ul>
+<div class="note primary">
+            <p>2.二极管 <font color="red">注意二极管开关频率，要高于Buck/Boost的开关频率</font></p>
+          </div>
+
+<ul>
+<li>肖特基二极管</li>
+<li>快恢复/超快恢复二极管</li>
+<li>推荐: </li>
+</ul>
+<p>1A/40V: 1N5819</p>
+<p>3A/40V: 1N5822 MBR340 SK34 30WQ04 31DQ04 SR304</p>
+<p>5A/40V: 1N5825 SR504 SB540 50WQ04</p>
+<p>8A/40V: SR840</p>
+<p>16A/40V: SR1640</p>
+<div class="note primary">
+            <p>3.电感 选择屏蔽电感</p>
+          </div>
+
+<ul>
+<li>直流电阻DCR:采用DCR较小的电感</li>
+<li>通流能力Irms</li>
+<li>饱和电流Isat</li>
+<li>电流需满足:I&lt;0.8*MAX(Irms,Isat)</li>
+</ul>
+<div class="note primary">
+            <p>4.电容</p>
+          </div>
+
+<ul>
+<li>输入电容: 电解电容并上0.1uF电容</li>
+<li>输出电容: 希望ESR较小,使用MLCC X7R 固态电容 (钽电容 耐压最是3倍的输出) 并上 0.1uF电容</li>
+</ul>
+<h2 id="1-3-芯片推荐"><a href="#1-3-芯片推荐" class="headerlink" title="1.3 芯片推荐"></a>1.3 芯片推荐</h2><blockquote>
+<p>LM2596/LM2576 ￥1</p>
+</blockquote>
+<ul>
+<li>输入电压: Max 40V</li>
+<li>输出电压: 1.2~37V</li>
+<li>输出电流: Max 3A</li>
+<li>开关频率: 150KHz (频率越高，效率越高)</li>
+</ul>
+<blockquote>
+<p>MC34063A/MC33063 ￥0.2 （支持升压/降压开关稳压芯片）</p>
+</blockquote>
+<ul>
+<li>输入电压: 2.5~40V</li>
+<li>输出电压: 1.25~40V</li>
+<li>输出电流: Max 1.5A</li>
+<li>开关频率: 100KHz (频率越高，效率越高)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Hardware</category>
+      </categories>
+      <tags>
+        <tag>开关电源</tag>
+        <tag>Buck</tag>
+        <tag>Boost</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>电阻电容电感</title>
+    <url>/posts/fab98bd8/</url>
+    <content><![CDATA[<p>电阻电容电感使用</p>
+<a id="more"></a>
+
+<h1 id="4-二极管作用"><a href="#4-二极管作用" class="headerlink" title="4.二极管作用"></a>4.二极管作用</h1><h2 id="4-1-防反接"><a href="#4-1-防反接" class="headerlink" title="4.1 防反接"></a>4.1 防反接</h2><p>不建议使用，一般使用PMOS</p>
+<p><img src="/posts/fab98bd8/4_1%E9%98%B2%E5%8F%8D%E6%8E%A51.PNG" alt="电源防反插"></p>
+<p><img src="/posts/fab98bd8/4_1%E9%98%B2%E5%8F%8D%E6%8E%A52.PNG" alt="电源防反插"></p>
+<p>二极管耐压值为:</p>
+
+\[{U_{\rm{D}}} \ge \sqrt 2 {U_i}\]
+
+
+
+
+<h2 id="4-2-给电感续流"><a href="#4-2-给电感续流" class="headerlink" title="4.2 给电感续流"></a>4.2 给电感续流</h2><p>当存在感性负载时，断路时需要使用二极管进行放电（电机驱动，电磁继电器,Buck-Boost电路）</p>
+<p><img src="/posts/fab98bd8/4_2%E7%94%B5%E6%84%9F%E7%BB%AD%E6%B5%811.PNG" alt="电感续流"></p>
+<blockquote>
+<p>Buck电路</p>
+</blockquote>
+<p><img src="/posts/fab98bd8/4_2%E7%94%B5%E6%84%9F%E7%BB%AD%E6%B5%812.PNG" alt="电感续流"></p>
+<h2 id="4-3-限幅"><a href="#4-3-限幅" class="headerlink" title="4.3 限幅"></a>4.3 限幅</h2><blockquote>
+<p>[-0.7V,0.7V]限幅</p>
+</blockquote>
+<p><img src="/posts/fab98bd8/4_3%E9%99%90%E5%B9%851.PNG" alt="限幅"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>HexTag标签插件使用</title>
     <url>/posts/761ddf72/</url>
     <content><![CDATA[<p>Tag Plugin是一种支持Hexo以标签插件形式来标准Markdown中显示具有自定义尺寸的图像。</p>
@@ -962,6 +1138,223 @@
       </tags>
   </entry>
   <entry>
+    <title>Qt项目配置文件pro和pri介绍</title>
+    <url>/posts/e6f2032/</url>
+    <content><![CDATA[<p>QT工程管理文件配置介绍</p>
+<a id="more"></a>
+
+<h1 id="1-pro文件配置"><a href="#1-pro文件配置" class="headerlink" title="1.pro文件配置"></a>1.pro文件配置</h1><figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">TEMPLATE = app      <span class="comment"># app:生成exe可执行文件 lib:生成dll库</span></span><br><span class="line">LANGUAGE = C++      <span class="comment"># 使用C++开发</span></span><br><span class="line">QT += widgets       <span class="comment"># 添加QT控件库</span></span><br><span class="line">CONFIG += console   <span class="comment"># 使能打印终端</span></span><br><span class="line">TARGET = appName    <span class="comment"># exe的文件名</span></span><br><span class="line">HEADERS += h1.hpp \ </span><br><span class="line">            h2.hpp      <span class="comment"># 添加头文件</span></span><br><span class="line"></span><br><span class="line">SOURCE += h1.cpp \</span><br><span class="line">            h2.cpp      <span class="comment"># 添加源文件</span></span><br><span class="line"></span><br><span class="line">FORMS += dialog.ui      <span class="comment"># 添加ui文件</span></span><br><span class="line"></span><br><span class="line">DESETDIR = ../../../bin     <span class="comment"># 最终目标可执行文件的存放路径</span></span><br><span class="line">OBJECTS_DIR = ../../../obj  <span class="comment"># 程序生成的中间临时文件的存放路径</span></span><br><span class="line">MOC_DIR = ../../../obj/moc  <span class="comment"># moc命令编译生成临时文件的存放路径</span></span><br><span class="line"></span><br><span class="line">$<span class="variable">$(path)</span>                    <span class="comment"># 使用环境变量</span></span><br><span class="line">$$LANGUAGE                  <span class="comment"># 使用脚本变量</span></span><br><span class="line">var1=&#x27;$$LANGUAGE&#x27;_suffix         <span class="comment"># 变量名加后缀</span></span><br><span class="line">message(var1)               <span class="comment"># 打印信息</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-1-EXE-or-Dll-生成-–-TEMPLATE"><a href="#1-1-EXE-or-Dll-生成-–-TEMPLATE" class="headerlink" title="1.1 EXE or Dll 生成 – TEMPLATE"></a>1.1 EXE or Dll 生成 – TEMPLATE</h2><table>
+<thead>
+<tr>
+<th align="left">函数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>TEMPLATE=app</code></td>
+<td>本项目生成一个EXE</td>
+</tr>
+<tr>
+<td align="left"><code>TEMPLATE=lib</code></td>
+<td>本项目生成一个dll</td>
+</tr>
+<tr>
+<td align="left"><code>TEMPLATE=subdirs</code></td>
+<td>表示本项目将扫描指定的子目录合集，与SUBDIRS配合使用</td>
+</tr>
+</tbody></table>
+<h2 id="1-2-使用C-开发语言-–-LANGUAGE"><a href="#1-2-使用C-开发语言-–-LANGUAGE" class="headerlink" title="1.2 使用C++开发语言 – LANGUAGE"></a>1.2 使用C++开发语言 – LANGUAGE</h2><p><code>LANGUAGE = C++</code></p>
+<h2 id="1-3-生成目标文件名称-–-TARGET"><a href="#1-3-生成目标文件名称-–-TARGET" class="headerlink" title="1.3 生成目标文件名称 – TARGET"></a>1.3 生成目标文件名称 – TARGET</h2><p><code>TARGET = xxxx</code> 根据TEMPLATE的设置会生成相应的xxxx.dll or xxxx.exe文件</p>
+<h2 id="1-4-debug-、-release-or-both-–-CONFIG"><a href="#1-4-debug-、-release-or-both-–-CONFIG" class="headerlink" title="1.4 debug 、 release or both – CONFIG"></a>1.4 debug 、 release or both – CONFIG</h2><ul>
+<li>CONFIG += aaa bbb ccc  # 增加配置项</li>
+<li>CONFIG -= aaa bbb ccc  # 删除配置项</li>
+</ul>
+<blockquote>
+<p>配置项取值</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="left">配置值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left">release</td>
+<td>以发布版本构建项目 <code>CONFIG+=release</code> or 取消: <code>CONFIG-=release</code></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">debug</td>
+<td>以调试版本构建项目 <code>CONFIG+=debug</code> or 取消: <code>CONFIG -= debug</code></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">debug_and_release</td>
+<td>以debug和release两个版本进行构建 <code>CONFIG+=debug_and_release</code></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="left">precompile_header</td>
+<td>表示可以在项目中使用预编译头文件 <code>CONFIG+=precompile_header</code></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="left">rtti</td>
+<td>启用RTTI支持，关闭时使用rtti_off</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="left">stl</td>
+<td>启用STL支持,关闭时使用stl_off</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="left">thread</td>
+<td>表示支持多线程，当CONFIG取值中包含<code>qt</code>时使用,默认使用</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="left">warn_on</td>
+<td>表示编译器尽可能的多输出报警信息</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="left">warn_off</td>
+<td>表示编译器尽可能的少输出报警信息</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="left">qt</td>
+<td>表示需要链接qt的类库，一般只在pro主文件中使用，否者一般在开发服务类应用库时，才会使用该配置</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="left">C++11</td>
+<td>启用C++11支持</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="left">C++14</td>
+<td>启用C++14支持</td>
+</tr>
+</tbody></table>
+<h2 id="1-5-使用QT模块-–-QT"><a href="#1-5-使用QT模块-–-QT" class="headerlink" title="1.5 使用QT模块 – QT"></a>1.5 使用QT模块 – QT</h2><blockquote>
+<p><code>QT += xxx xxx xxx</code> or <code>QT -= xxx xxx</code></p>
+</blockquote>
+<h2 id="1-6-各种DIR和PATH的使用"><a href="#1-6-各种DIR和PATH的使用" class="headerlink" title="1.6 各种DIR和PATH的使用"></a>1.6 各种DIR和PATH的使用</h2><table>
+<thead>
+<tr>
+<th align="left">序号</th>
+<th align="left">子项</th>
+<th align="left">描述</th>
+<th align="left">案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left"><code>INCLUDEPATH</code></td>
+<td align="left">描述构建项目时，使用的include目录<br><strong><font color="red">如果包含UI资源，需要先配置UI_DIR路径，在将其添加到INCLUDEPATH中</font></strong></td>
+<td align="left"><code>INCLUDEPATH=$$(PROJECTHOME)/include</code> <br> <font color="red">UI_DIR=$$(PROJECTHOME)/obj/demo/dialog/ui<br>INCLUDEPATH += UI_DIR</font></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left"><code>DESTDIR</code></td>
+<td align="left">项目生成dll或exe的路径</td>
+<td align="left"><code>DESTDIR = $$(PROJECTHOME)/lib</code></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left"><code>MOC_DIR</code></td>
+<td align="left">moc命令生成文件的存放目录</td>
+<td align="left"><code>MOC_DIR = $$(PROJECTHOME)/obj/moc</code></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left"><code>OBJECTS_DIR</code></td>
+<td align="left">生成中间件的存放路径</td>
+<td align="left"><code>OBJECTS_DIR = $$(PROJECTHOME)/obj</code></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left"><code>RCC_DIR</code></td>
+<td align="left">qt资源编译生成路径</td>
+<td align="left"><code>RCC_DIR = $$(PROJECTHOME)/obj/resources</code></td>
+</tr>
+<tr>
+<td align="left">6</td>
+<td align="left"><code>UI_DIR</code></td>
+<td align="left">项目生成dll或exe的路径</td>
+<td align="left"><code>UI_DIR = $$(PROJECTHOME)/obj/ui</code></td>
+</tr>
+</tbody></table>
+<h2 id="1-7-FORMS使用"><a href="#1-7-FORMS使用" class="headerlink" title="1.7 FORMS使用"></a>1.7 FORMS使用</h2><p>用于描述项目中使用的UI文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">FORMS &#x3D; dialog.ui \ </span><br><span class="line">    login.ui</span><br></pre></td></tr></table></figure>
+<h2 id="1-8-添加头文件、源文件-–-HEADERS-SOURCES"><a href="#1-8-添加头文件、源文件-–-HEADERS-SOURCES" class="headerlink" title="1.8 添加头文件、源文件 – HEADERS SOURCES"></a>1.8 添加头文件、源文件 – HEADERS SOURCES</h2><p>用于描述项目中用到的头(源)文件列表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HEADERS &#x3D; abc.pro \ </span><br><span class="line">    animate&#x2F;files&#x2F;myfile.h \ </span><br><span class="line">    $$(PROJECTHOME)&#x2F;include&#x2F;base.h</span><br></pre></td></tr></table></figure>
+<h2 id="1-9-添加资源-–-RESOURCES"><a href="#1-9-添加资源-–-RESOURCES" class="headerlink" title="1.9 添加资源 – RESOURCES"></a>1.9 添加资源 – RESOURCES</h2><p>用于描述项目使用的资源描述文件(*.qrc):<code>RESOURCES += mdi.qrc</code></p>
+<h2 id="1-10-添加库文件-–-LIBS"><a href="#1-10-添加库文件-–-LIBS" class="headerlink" title="1.10 添加库文件 – LIBS"></a>1.10 添加库文件 – LIBS</h2><blockquote>
+<p><code>-l</code>:表示库文件名 <code>LIBS += -lmycomm</code></p>
+</blockquote>
+<blockquote>
+<p>‘-L’:表示库文件路径 当一个文件夹中包含多个lib文件时</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LIBS +&#x3D; -L&#x2F;usr&#x2F;local&#x2F;myprogram&#x2F;lib \ </span><br><span class="line">        -lmcomm \ </span><br><span class="line">        -lfesp</span><br></pre></td></tr></table></figure>
+<h2 id="1-11-描述项目中用到的翻译文件-–-TRANSLATIONS"><a href="#1-11-描述项目中用到的翻译文件-–-TRANSLATIONS" class="headerlink" title="1.11 描述项目中用到的翻译文件 – TRANSLATIONS"></a>1.11 描述项目中用到的翻译文件 – TRANSLATIONS</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TRANSLATIONS &#x3D; translations&#x2F;graphplatform_zh_CN.ts</span><br></pre></td></tr></table></figure>
+<h1 id="2-pri配置文件"><a href="#2-pri配置文件" class="headerlink" title="2. pri配置文件"></a>2. pri配置文件</h1><h2 id="1-关键字"><a href="#1-关键字" class="headerlink" title="1.关键字"></a>1.关键字</h2><table>
+<thead>
+<tr>
+<th align="left">序号</th>
+<th align="left">关键字</th>
+<th align="left">描述</th>
+<th align="left">案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left"><code>include</code></td>
+<td align="left">在pro中引入pri</td>
+<td align="left"><code>include(../base.pri)</code></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left"><code>unix</code>/<code>win32</code></td>
+<td align="left">用于定义在不同平台下构建项目时的配置</td>
+<td align="left"><code>unix&#123; ... &#125;</code><br><code>win32&#123; ... &#125;</code></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left"><code>DEFINES</code></td>
+<td align="left">在pri中定义宏</td>
+<td align="left"><code>DEFINES *= xxxx</code></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left"><code>CONFIG</code></td>
+<td align="left">项目配置参数</td>
+<td align="left"><code>CONFIG += xxxx</code></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left"><code>QMAKE_CXXFLAGS</code></td>
+<td align="left">配置编译标志</td>
+<td align="left"><code>QMAKE_CXXFLAGS = -wd499</code></td>
+</tr>
+</tbody></table>
+<h1 id="3-使用qmake生成VS2019的工程项目管理"><a href="#3-使用qmake生成VS2019的工程项目管理" class="headerlink" title="3.使用qmake生成VS2019的工程项目管理"></a>3.使用qmake生成VS2019的工程项目管理</h1><p>使用x64 Native Tools Command，进入源码pro目录,输入如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qmake -tp vc</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>单片机</category>
+      </categories>
+      <tags>
+        <tag>ESP32</tag>
+        <tag>LED</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTML入门笔记</title>
     <url>/posts/ea82bb07/</url>
     <content><![CDATA[<p>HTML基本语法</p>
@@ -1040,6 +1433,134 @@
       </categories>
       <tags>
         <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript</title>
+    <url>/posts/cc1b9611/</url>
+    <content><![CDATA[<p>JavaScript脚本入门</p>
+<a id="more"></a>
+
+<h1 id="1-JavaScript引入"><a href="#1-JavaScript引入" class="headerlink" title="1.JavaScript引入"></a>1.JavaScript引入</h1><ol>
+<li>内嵌式: 在HTML文档中,以<script>标签引入</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>外联式: 在HTML文档中,通过<script src=""/>标签引入 xxx.js文件<script src="xxx.js" type="text/javascript" charset="utf-8"></script>
+
+</li>
+</ol>
+<h1 id="2-变量声明"><a href="#2-变量声明" class="headerlink" title="2.变量声明"></a>2.变量声明</h1><blockquote>
+<p>命名规范:</p>
+</blockquote>
+<ul>
+<li>必须以字母/下划线开头,中间可以是数字、字符或下划线</li>
+<li>变量名不能包含空格等符号</li>
+<li>不能使用JavaScript关键字作为变量名,如:function</li>
+<li>JavaScript严格区分大小写</li>
+</ul>
+<blockquote>
+<p>变量声明</p>
+</blockquote>
+<p><code>var 变量名</code></p>
+<blockquote>
+<p>变量赋值</p>
+</blockquote>
+<p><code>var 变量名 = 值</code></p>
+<h1 id="3-数据类型"><a href="#3-数据类型" class="headerlink" title="3.数据类型"></a>3.数据类型</h1><ul>
+<li>Undefined类型只有一个值，即undefined(默认值)</li>
+<li>Null,只有一个专用值null,表示空</li>
+<li>(undefined==null):true,但含义不同</li>
+<li>Boolean:true或false</li>
+<li>Number:表示数字</li>
+<li>String:字符串有<code>&quot;</code>或<code>&#39;</code>声明</li>
+<li>Object:变量可以是一个引用类型或null</li>
+</ul>
+<h1 id="4-案例"><a href="#4-案例" class="headerlink" title="4.案例"></a>4.案例</h1><h2 id="4-1-注册表单验证"><a href="#4-1-注册表单验证" class="headerlink" title="4.1 注册表单验证"></a>4.1 注册表单验证</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">checkForm</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="comment">//alert(&quot;aa&quot;);</span></span><br><span class="line">		<span class="comment">/**校验用户名*/</span></span><br><span class="line">		<span class="comment">//1.获取用户输入的数据</span></span><br><span class="line">		<span class="keyword">var</span> uValue = <span class="built_in">document</span>.getElementById(<span class="string">&quot;user&quot;</span>).value;</span><br><span class="line">		<span class="comment">//alert(uValue);</span></span><br><span class="line">		<span class="keyword">if</span>(uValue==<span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">			<span class="comment">//2.给出错误提示信息</span></span><br><span class="line">			alert(<span class="string">&quot;用户名不能为空!&quot;</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/*校验密码*/</span></span><br><span class="line">		<span class="keyword">var</span> pValue = <span class="built_in">document</span>.getElementById(<span class="string">&quot;password&quot;</span>).value;</span><br><span class="line">		<span class="keyword">if</span>(pValue==<span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">			alert(<span class="string">&quot;密码不能为空!&quot;</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/**校验确认密码*/</span></span><br><span class="line">		<span class="keyword">var</span> rpValue = <span class="built_in">document</span>.getElementById(<span class="string">&quot;repassword&quot;</span>).value;</span><br><span class="line">		<span class="keyword">if</span>(rpValue!=pValue)&#123;</span><br><span class="line">			alert(<span class="string">&quot;两次密码输入不一致!&quot;</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/*校验邮箱*/</span></span><br><span class="line">		<span class="keyword">var</span> eValue = <span class="built_in">document</span>.getElementById(<span class="string">&quot;eamil&quot;</span>).value;</span><br><span class="line">		<span class="keyword">if</span>(!^<span class="regexp">/([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/</span>.test(eValue))&#123;</span><br><span class="line">			alert(<span class="string">&quot;邮箱格式不正确!&quot;</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">  &lt;form action=<span class="string">&quot;#&quot;</span> method=<span class="string">&quot;get&quot;</span> name=<span class="string">&quot;regForm&quot;</span> onsubmit=<span class="string">&quot;return checkForm()&quot;</span>&gt;</span><br><span class="line">    ...</span><br><span class="line">  &lt;/form&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>WEB前端开发</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1.RobotArm坐标变换</title>
+    <url>/posts/3be36776/</url>
+    <content><![CDATA[<p>机械臂关节坐标变换介绍</p>
+<a id="more"></a>
+<h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h1><p>如果把机械臂每个关节看作一个空间坐标系，每个相邻坐标系之间以连杆相连，则必须建立两个连杆之间的描述，如下图所示。</p>
+<p><img src="/posts/3be36776/%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2.PNG" alt="关节坐标变换"></p>
+<ul>
+<li>假设机械臂有N个关节，则机械臂拥有N+1个连杆(基座为连杆0);</li>
+<li>关节J+1的坐标系{j}的确立:<ul>
+<li>以上一关节J和关节J+1的旋转轴($z_{j-1}$和$z_j$)的法线作为{j}的x轴$x_j$</li>
+<li>z轴、x轴确立，用右手定则确定y轴</li>
+</ul>
+</li>
+<li>DH模型参数确定<ul>
+<li>$x_{j-1}$与$x_j$的夹角为$\theta_{j}$</li>
+<li>坐标系{j-1}原点与坐标系{j}原点投影到$z_{j-1}$轴上点的距离$d_j$</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>DH模型</p>
+</blockquote>
+<p>机械臂建立数学模型（DH模型），需要对各个关节建立空间坐标系，并建立DH参数表</p>
+<table>
+<thead>
+<tr>
+<th align="center">连杆号</th>
+<th align="center">$\theta_j$</th>
+<th align="center">$d_j$</th>
+<th align="center">$a_j$</th>
+<th align="center">$\alpha_j$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">连杆1</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+</tr>
+<tr>
+<td align="center">连杆2</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+</tr>
+<tr>
+<td align="center">连杆3</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+</tr>
+<tr>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>空间坐标-旋转平移公式</p>
+</blockquote>
+
+\[^{j - 1}{A_j}({\theta _j},{d_j},{\alpha _j},{a_j}) = \left[ {\begin{array}{*{20}{c}}{\cos {\theta _j}}&{ - \sin {\theta _j}\cos {\alpha _j}}&{\sin {\theta _j}\sin {\alpha _j}}&{{a_j}\cos {\theta _j}}\\{\sin {\theta _j}}&{\cos {\theta _j}\sin {\alpha _j}}&{ - \cos {\theta _j}\sin {\alpha _j}}&{{a_j}\sin {\theta _j}}\\0&{\sin {\alpha _j}}&{\cos {\alpha _j}}&{{d_j}}\\0&0&0&1\end{array}} \right]\]
+]]></content>
+      <categories>
+        <category>机器人学</category>
+      </categories>
+      <tags>
+        <tag>机械臂</tag>
+        <tag>坐标变换</tag>
       </tags>
   </entry>
   <entry>
@@ -1229,6 +1750,327 @@
       <tags>
         <tag>HTML</tag>
         <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FM4时钟单元</title>
+    <url>/posts/undefined/</url>
+    <content><![CDATA[<p>FM4单片机时钟介绍</p>
+<a id="more"></a>
+<h1 id="1-时钟产生单元"><a href="#1-时钟产生单元" class="headerlink" title="1.时钟产生单元"></a>1.时钟产生单元</h1><blockquote>
+<p>5种时钟源</p>
+</blockquote>
+<ul>
+<li>Main Clock (CLKMO)</li>
+<li>Sub Clock (CLKSO)</li>
+<li>High-speed CR Clock (CLKHC)</li>
+<li>Low-speed CR Clock (CLKLC)</li>
+<li>Main PLL Clock (CLKPLL)</li>
+</ul>
+<p>可从上述时钟源种选择一种作为master clock,作为内部总线时钟用于MCU<br>通过对master clock分频,产生一个base clock,对base clock分频产生内部总线时钟。</p>
+<blockquote>
+<p>Master Clock  - Interal Bus Clock</p>
+<blockquote>
+<p>Div=&gt; Base Clock - Interal Bus Clock</p>
+<blockquote>
+<p>Div=&gt; Clocks - Interal Bus Clock </p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>5种内部总线时钟</p>
+</blockquote>
+<ul>
+<li>Base Clock (FCLK/HCLK)</li>
+<li>APB0 Clock (PCLK0)</li>
+<li>APB1 Clock (PCLK1)</li>
+<li>APB2 Clock (PCLK2)</li>
+<li>TRACE Clock (TPIUCLK)</li>
+</ul>
+<p>除此之外，以下外设在使用时，也要提供时钟</p>
+<ul>
+<li>USB Clock</li>
+<li>USB/Ethernet Clock</li>
+<li>CAN prescaler Clock</li>
+<li>I2S Clock</li>
+<li>GDC Clock</li>
+<li>Software watchdog timer count clock</li>
+</ul>
+<blockquote>
+<p>时钟产生单元特性</p>
+</blockquote>
+<ul>
+<li><p>可以设置Main Clock稳定周期</p>
+</li>
+<li><p>可以设置Main Clock稳定中断事件</p>
+</li>
+<li><p>可以设置Sub Clock稳定周期</p>
+</li>
+<li><p>可以设置Sub Clock稳定中断事件</p>
+</li>
+<li><p>可以设置PLL Clock稳定周期</p>
+</li>
+<li><p>可以设置PLL Clock稳定中断事件</p>
+</li>
+<li><p>可以设置PLL倍频</p>
+</li>
+<li><p>可以选择master clock</p>
+</li>
+<li><p>可以设置内部时钟总线的内部分频</p>
+</li>
+<li><p>可以运行/停止APB1 和 APB2总线时钟</p>
+</li>
+<li><p>看门狗定时器时钟(WDT)可以分频</p>
+</li>
+<li><p>可以停止/运行WDT</p>
+</li>
+<li><p>在debug模式下,可以设置WDT计数操作</p>
+</li>
+</ul>
+<h2 id="1-1-时钟源-Master-Clock-可以选择其中一个作为时钟源"><a href="#1-1-时钟源-Master-Clock-可以选择其中一个作为时钟源" class="headerlink" title="1.1 时钟源 - Master Clock 可以选择其中一个作为时钟源"></a>1.1 时钟源 - Master Clock 可以选择其中一个作为时钟源</h2><blockquote>
+<p>1.Main Clock</p>
+</blockquote>
+<p>由外部引脚X0,X1提供时钟</p>
+<blockquote>
+<p>2.Sub Clock</p>
+</blockquote>
+<p>由外部引脚X0A,X1A提供</p>
+<blockquote>
+<p>3.High-speed CR Clock</p>
+</blockquote>
+<p>高速CR振荡时钟</p>
+<blockquote>
+<p>4.Low-speed CR Clock</p>
+</blockquote>
+<p>低速CR振荡时钟</p>
+<blockquote>
+<p>5.PLL Clock</p>
+</blockquote>
+<p>由Main Clock/High-speed CR Clock倍频获得</p>
+<h2 id="1-2-内部总线时钟"><a href="#1-2-内部总线时钟" class="headerlink" title="1.2 内部总线时钟"></a>1.2 内部总线时钟</h2><blockquote>
+<p>1.Base Clock (FCLK/HCLK 直接作用于CPU)  </p>
+</blockquote>
+<p>HCLK直接作用于AHB总线时钟</p>
+<p>Base Clock = MasterClock/1 or MasterClock/16</p>
+<p>在定时器模式，RTC模式，停机模式，深度待机RTC模式以及深度待机停止模式,Base Clock停止</p>
+<p><font color="red">在睡眠模式下，CPU停止HCLK，但FCLK继续使用</font></p>
+<blockquote>
+<p>2.APB0总线时钟(PCLK0)</p>
+</blockquote>
+<p>PCLK0 = Base Clock/1 or Base Clock/8</p>
+<p>在定时器模式，RTC模式，停机模式，深度待机RTC模式以及深度待机停止模式,PCLK0停止</p>
+<blockquote>
+<p>2.APB1总线时钟(PCLK1)</p>
+</blockquote>
+<p>PCLK1 = Base Clock/1 or Base Clock/8</p>
+<p>在定时器模式，RTC模式，停机模式，深度待机RTC模式以及深度待机停止模式,PCLK1停止</p>
+<p><font color="red">该总线时钟可以使用寄存器停止运行</font></p>
+<blockquote>
+<p>3.APB2总线时钟</p>
+</blockquote>
+<p>同 APB1 </p>
+<blockquote>
+<p>4.TPIU Clock</p>
+</blockquote>
+<p>同APB0(<font color="red">只有代ETM的产品才能使能该时钟</font>)</p>
+<h2 id="1-3其他时钟源"><a href="#1-3其他时钟源" class="headerlink" title="1.3其他时钟源"></a>1.3其他时钟源</h2><blockquote>
+<p>1.USB时钟</p>
+</blockquote>
+<p>产生48MHz时钟，通过PLL-&gt;USBCLK</p>
+<p>在定时器模式，RTC模式，停机模式，深度待机RTC模式以及深度待机停止模式,USB时钟停止</p>
+<p>该时钟独立于Master Clock</p>
+<blockquote>
+<p>2.USB/Ethernet Clock</p>
+</blockquote>
+<p>同上</p>
+<blockquote>
+<p>3.CAN prescaler Clock</p>
+</blockquote>
+<p>该时钟与PLL一致</p>
+<p>通过配置presaler一侧，实现分频</p>
+<p>在RTC模式、停机模式、深度待机RTC模式、深度待机停机模式下停止使用</p>
+<p>通过寄存器可以停止该时钟</p>
+<blockquote>
+<p>4.I2S prescaler Clock</p>
+</blockquote>
+<p>由PLL提供</p>
+<p>在定时器模式、RTC模式、停机模式、深度待机RTC模式、深度待机停机模式下停止使用</p>
+<p>可以独立设置时钟</p>
+<blockquote>
+<p>5.GDC prescler Clock</p>
+</blockquote>
+<p>由PLL提供</p>
+<p>在定时器模式、RTC模式、停机模式、深度待机RTC模式、深度待机停机模式下停止使用</p>
+<p>可以独立设置时钟</p>
+<blockquote>
+<p>6.WDT Clock</p>
+</blockquote>
+<p>该时钟与APB0相连</p>
+<p>WDTClk = APB0/1 or APB0/8</p>
+<p>在定时器模式、RTC模式、停机模式、深度待机RTC模式、深度待机停机模式下停止使用 </p>
+<h2 id="1-3时钟树"><a href="#1-3时钟树" class="headerlink" title="1.3时钟树"></a>1.3时钟树</h2><p><img src="/posts/undefined/ClockTree.PNG" alt="FM4时钟树"></p>
+<blockquote>
+<p><font color="red">[注]</font> <br><br>*2. PSW_TMR:PINC 为PLL输入时钟选择位 <br><br>*3. SCM_CTL:RCS[2:0] Master Clock选择位 <br></p>
+</blockquote>
+<h1 id="2-PLL作为主时钟设置"><a href="#2-PLL作为主时钟设置" class="headerlink" title="2.PLL作为主时钟设置"></a>2.PLL作为主时钟设置</h1><h1 id="2-1时钟选择"><a href="#2-1时钟选择" class="headerlink" title="2.1时钟选择"></a>2.1时钟选择</h1><p>1.设置 System Clock Mode Control Register (SCM_CTL)中SOSCE位，旁路CLKSO</p>
+<h2 id="2-2-PLL设置"><a href="#2-2-PLL设置" class="headerlink" title="2.2 PLL设置"></a>2.2 PLL设置</h2><p>1.设置PLL时钟振荡启动稳定时间寄存器(PLL Clock Oscillation Stabilization Wait Time Setup Register)PSW_TMR</p>
+<ul>
+<li><p>选择PLL输入时钟</p>
+</li>
+<li><p>设置PLL稳定时长</p>
+</li>
+<li><p>通过设置PLL Control Register 1(PLL_CTL1) 和 PLL Control Register 2 (PLL_CTL2)，配置PLLCLK</p>
+<table>
+<thead>
+<tr>
+<th align="center">InputClk</th>
+<th align="center">K</th>
+<th align="center">PLLIn</th>
+<th align="center">N</th>
+<th align="center">PLLout</th>
+<th align="center">M</th>
+<th align="center">CLKPLL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>4MHz</strong></td>
+<td align="center"><strong>1</strong></td>
+<td align="center"><strong>4MHz</strong></td>
+<td align="center"><strong>40</strong></td>
+<td align="center"><strong>320MHz</strong></td>
+<td align="center"><strong>2</strong></td>
+<td align="center"><strong>160MHz</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>8MHz</strong></td>
+<td align="center"><strong>1</strong></td>
+<td align="center"><strong>8MHz</strong></td>
+<td align="center"><strong>20</strong></td>
+<td align="center"><strong>320MHz</strong></td>
+<td align="center"><strong>2</strong></td>
+<td align="center"><strong>160MHz</strong></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p>2.设置System Clock Mode Control Register (SCM_CTL) 的PLLE位,使能PLL振荡</p>
+<p>3.通过System Clock Mode Status Register (SCM_STR) 的PLL oscillation stable状态位，判断PLL是否完成</p>
+<p>4.设置System Clock Mode Control Register(SCM_CTL)的RCS[2:0]=010,将其作为Master Clock的输入                             </p>
+<h2 id="2-4-分频设置"><a href="#2-4-分频设置" class="headerlink" title="2.4 分频设置"></a>2.4 分频设置</h2><p>主要设置 Base Clock Prescaler Register (BSC_PSR), APB0 Prescaler Register (APBC0_PSR), APB1 Prescaler Register (APBC1_PSR), APB2<br>Prescaler Register (APBC2_PSR), and Trace Clock Prescaler Register (TTC_PSR).</p>
+<h1 id="2-5与时钟相关的中断"><a href="#2-5与时钟相关的中断" class="headerlink" title="2.5与时钟相关的中断"></a>2.5与时钟相关的中断</h1><blockquote>
+<p>4种中断类型</p>
+</blockquote>
+<ul>
+<li>FCS (anomalous frequency detection) interrupt </li>
+<li>Main PLL clock oscillation stabilization wait completion interrupt </li>
+<li>Sub clock oscillation stabilization wait completion interrupt </li>
+<li>Main clock oscillation stabilization wait completion interrupt </li>
+</ul>
+<blockquote>
+<p>中断相关寄存器</p>
+</blockquote>
+<ul>
+<li>Interrupt Enable Register (INT_ENR) </li>
+<li>Interrupt Status Register (INT_STR) read-only </li>
+<li>Interrupt Clear Register (INT_CLR) write-only</li>
+</ul>
+<h1 id="3-配置流程"><a href="#3-配置流程" class="headerlink" title="3.配置流程"></a>3.配置流程</h1><h1 id="High-speed-CR-Run-Mode-gt-Desired-Clock-Mode"><a href="#High-speed-CR-Run-Mode-gt-Desired-Clock-Mode" class="headerlink" title="High-speed CR Run Mode -&gt; Desired Clock Mode"></a>High-speed CR Run Mode -&gt; Desired Clock Mode</h1><p><img src="/posts/undefined/High-SpeedCR2DesiredClock.PNG" alt="FM4时钟树"></p>
+<blockquote>
+<p>配置步骤</p>
+<blockquote>
+<p><strong><font color="yellowgreen">Step1.使用High-Speed CR 时钟</font></strong> <br><br>1.1 等待内部High-Speed CR 振荡稳定:系统上电后默认时钟 <br><br>1.2 进行BusClock分频 <br><br>1.3 使用INT_CLR清除所有中断标志位<br><br><strong><font color="yellowgreen">Step2.由High-Speed CR 时钟切换至MainCLK</font></strong> <br><br>2.1 设置CSW_TMR寄存器中的振荡延时 <br><br>2.2 使能振荡稳定中断INT_ENT ??? 这应该不需要 <br><br>2.3 使能MainCLK SCM_CTL:MOSCE=1 作为Master CLK <br><br>2.4 等待MainCLK振荡稳定标志位SCM_STR:MORDY=1 <br><br><strong><font color="yellowgreen">Step3.由MainCLK切换至PLLCLK</font></strong> <br><br>3.1 设置内部PLL振荡稳定时间 <br><br>3.2 设置PLL输入时钟 <br><br>3.3 设置PLL振荡稳定中断 ??? 这应该不需要 <br><br>3.4 通过设置PLL_CTL1,PLL_CTL2设置倍频系数 <br><br>3.5 使能PLL（SCM_CTL:PLLE=1）<br><br>3.6 确认PLL振荡状态标志位:SCM_STR:PLRDY <br><br><strong><font color="yellowgreen">Step4.设置Master Clock输入</font></strong> <br><br>4.1 设置SCM_CTL:RCS设置相应的时钟模式 <br><br>4.2 SCM:STR:RCM == SCM_CTL:RCS 正在切换 <br> </p>
+</blockquote>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bsp_PLLInit</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">uint32_t</span> tmp;</span><br><span class="line">	</span><br><span class="line"><span class="comment">// Step1.使用High-Speed CR 时钟	</span></span><br><span class="line"><span class="comment">// 1.1 等待内部High-Speed CR 振荡稳定:系统上电后默认时钟</span></span><br><span class="line"><span class="comment">// 1.2 进行BusClock分频 &lt;br/&gt;</span></span><br><span class="line"><span class="comment">// 1.3 使使用INT_CLR清除所有中断标志位&lt;br/&gt;</span></span><br><span class="line">	FM4_CRG-&gt;INT_CLR |=<span class="number">0x07</span>;</span><br><span class="line">	</span><br><span class="line"><span class="comment">// Step2.由High-Speed CR 时钟切换至MainCLK</span></span><br><span class="line">	tmp = FM4_CRG-&gt;CSW_TMR &amp; ~<span class="number">0x0f</span>;</span><br><span class="line">	FM4_CRG-&gt;CSW_TMR = tmp|<span class="number">0x0b</span>; <span class="comment">// 20.96s</span></span><br><span class="line">	<span class="comment">//FM4_CRG-&gt;INT_ENR |= 0x01;	// 使能MainCLK中断</span></span><br><span class="line">	FM4_CRG-&gt;SCM_CTL |= <span class="number">0x01</span>&lt;&lt;<span class="number">1</span>; <span class="comment">// Enable Main CLK</span></span><br><span class="line">	<span class="keyword">while</span>(~FM4_CRG-&gt;SCM_STR&amp;(<span class="number">0x01</span>&lt;&lt;<span class="number">1</span>));<span class="comment">//SCM_STR:MORDY</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">// Step3.由MainCLK切换至PLLCLK</span></span><br><span class="line">	tmp = FM4_CRG-&gt;PSW_TMR &amp; ~(<span class="number">0x01</span>&lt;&lt;<span class="number">4</span>|<span class="number">0x07</span>);</span><br><span class="line">	FM4_CRG-&gt;PSW_TMR = tmp|<span class="number">0x07</span>; <span class="comment">// 16.40 PLLin = MainClk</span></span><br><span class="line">	</span><br><span class="line">	tmp = FM4_CRG-&gt;PLL_CTL1 &amp; ~<span class="number">0xff</span>;	</span><br><span class="line">	FM4_CRG-&gt;PLL_CTL1 = tmp|<span class="number">0x01</span>;	<span class="comment">// K=1 M=2</span></span><br><span class="line">	tmp = FM4_CRG-&gt;PLL_CTL2 &amp; ~<span class="number">0xff</span>;</span><br><span class="line">	FM4_CRG-&gt;PLL_CTL2 = tmp|<span class="number">39</span>;	<span class="comment">// N=39</span></span><br><span class="line">	FM4_CRG-&gt;SCM_CTL |= <span class="number">0x01</span>&lt;&lt;<span class="number">4</span>; <span class="comment">// Enable PLL CLK</span></span><br><span class="line">	<span class="keyword">while</span>(~FM4_CRG-&gt;SCM_STR&amp;(<span class="number">0x01</span>&lt;&lt;<span class="number">4</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Step4.设置PLL为Master Clock输入</span></span><br><span class="line">	tmp = FM4_CRG-&gt;SCM_CTL &amp; ~(<span class="number">0x07</span>&lt;&lt;<span class="number">5</span>);</span><br><span class="line">	FM4_CRG-&gt;SCM_CTL = tmp|(<span class="number">0x02</span>&lt;&lt;<span class="number">5</span>);</span><br><span class="line">	</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Workaround for preventing MISRA C:1998 Rule 46 (MISRA C:2004 Rule 12.2)</span></span><br><span class="line">  <span class="comment">// violations:</span></span><br><span class="line">  <span class="comment">//   &quot;Unordered reads and writes to or from same location&quot; and</span></span><br><span class="line">  <span class="comment">//   &quot;Unordered accesses to a volatile location&quot;</span></span><br><span class="line">  <span class="keyword">while</span>((FM4_CRG-&gt;SCM_STR&amp;(<span class="number">0x02</span>&lt;&lt;<span class="number">5</span>)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>执行前，替换系统的SystemInit() <br><br>系统不断复位 —&gt;&gt;&gt; 对比SystemInit;发现需要进行关看门狗;此外由于SystemInit()已实现160MHz配置，无需进行时钟设置</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">if</span> (HWWD_DISABLE)                                 <span class="comment">/* HW Watchdog Disable */</span></span></span><br><span class="line">  FM4_HWWDT-&gt;WDG_LCK = <span class="number">0x1ACCE551</span>u;                <span class="comment">/* HW Watchdog Unlock */</span></span><br><span class="line">  FM4_HWWDT-&gt;WDG_LCK = <span class="number">0xE5331AAE</span>u;</span><br><span class="line">  FM4_HWWDT-&gt;WDG_CTL = <span class="number">0u</span>;                         <span class="comment">/* HW Watchdog stop */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>FM4</category>
+      </categories>
+      <tags>
+        <tag>ARM</tag>
+        <tag>Cortex-M4</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/posts/4a17b156/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<a id="more"></a>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p><img src="/posts/4a17b156/islands.jpeg" alt="风景"></p>
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>** argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Hello World&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>markdown</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Trilib插件使用</title>
+    <url>/posts/undefined/</url>
+    <content><![CDATA[<p>Trilib插件为Unity3D的付费插件，可实现Unity程序运行状态下，从程序外部动态加载数模。支持FBX, OBJ, GLTF2, STL, PLY, 3MF以及ZIP等文件。</p>
+<a id="more"></a>
+
+<h1 id="1-安装-amp-编译"><a href="#1-安装-amp-编译" class="headerlink" title="1.安装&amp;编译"></a>1.安装&amp;编译</h1><ul>
+<li>下载“TriLib - Model loader package.unitypackage”插件包，并使Unity3D导入插件;</li>
+<li>编译运行时报错:TriLibConfigurePlugin.cs报错:没有”BuildTarget.Lumis”值,将其改为”BuildTarget.StandaloneWindows”，即可编译通过;</li>
+</ul>
+<blockquote>
+<p>运行TriLib自带的AssetLoader场景，效果如下:</p>
+</blockquote>
+<p><img src="/posts/undefined/AssetLoader1.PNG" alt="动态加载FBX效果"></p>
+<h1 id="2-源码分析"><a href="#2-源码分析" class="headerlink" title="2.源码分析"></a>2.源码分析</h1><h1 id="2-1-Sample-cs进行修改"><a href="#2-1-Sample-cs进行修改" class="headerlink" title="2.1 Sample.cs进行修改"></a>2.1 Sample.cs进行修改</h1><p>使用assetLoader类之间进行动态加载</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadFBXClick</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="built_in">string</span> fbxPath = <span class="string">@&quot;C:\Users\Administrator\Documents\ABB\J4.FBX&quot;</span>;</span><br><span class="line">        <span class="keyword">using</span> (<span class="keyword">var</span> assetLoader = <span class="keyword">new</span> AssetLoader())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">var</span> assetLoaderOptions = AssetLoaderOptions.CreateInstance();</span><br><span class="line">                assetLoaderOptions.RotationAngles = <span class="keyword">new</span> Vector3(<span class="number">90f</span>, <span class="number">180f</span>, <span class="number">0f</span>);</span><br><span class="line">                assetLoaderOptions.AutoPlayAnimations = <span class="literal">true</span>;</span><br><span class="line">                assetLoaderOptions.UseOriginalPositionRotationAndScale = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">var</span> loadedGameObject = assetLoader.LoadFromFile(fbxPath, assetLoaderOptions);</span><br><span class="line">                loadedGameObject.transform.position = <span class="keyword">new</span> Vector3(<span class="number">128f</span>, <span class="number">0f</span>, <span class="number">0f</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            catch (Exception e)</span><br><span class="line">            &#123;</span><br><span class="line">                Debug.LogError(e.ToString());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>通过查看<code>AssetLoaderWindow.cs</code>，发现主要实现<code>AssetLoader</code>类调用</p>
+<h1 id="2-2-AssetLoaderWindow-cs中LoadInternal"><a href="#2-2-AssetLoaderWindow-cs中LoadInternal" class="headerlink" title="2.2 AssetLoaderWindow.cs中LoadInternal"></a>2.2 AssetLoaderWindow.cs中LoadInternal</h1><figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> Loads a model from the given filename, fibytes or browser files.</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;filename&quot;&gt;</span>Model filename.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;fileBytes&quot;&gt;</span>Model file bytes.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;browserFilesCount&quot;&gt;</span>Browser filcount.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">LoadInternal</span>(<span class="params"><span class="built_in">string</span> filename, <span class="built_in">byte</span>[] fileBytes = <span class="literal">null</span>, <span class="built_in">int</span> browserFilesCount = <span class="number">-1</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    PreLoadSetup();</span><br><span class="line">    <span class="keyword">var</span> assetLoaderOptions = GetAssetLoaderOptions();</span><br><span class="line">    <span class="keyword">if</span> (!Async)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">using</span> (<span class="keyword">var</span> assetLoader = <span class="keyword">new</span> AssetLoader())</span><br><span class="line">        &#123;</span><br><span class="line">            assetLoader.OnMetadataProcessed AssetLoader_OnMetadataProcessed;</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (fileBytes != <span class="literal">null</span> &amp;&amp; fileBytes.Length &gt; <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    _rootGameObject = assetLoader.LoadFromMemoryWithTextures(fileBytes, FileUtils.GetFileExtension(filename), assetLoaderOptions, _rootGameObject);</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span> (!<span class="built_in">string</span>.IsNullOrEmpty(filename))</span><br><span class="line">                &#123;</span><br><span class="line">                    _rootGameObject = assetLoader.LoadFromFileWithTextures(filename, assetLoaderOptions);</span><br><span class="line">                &#125;<span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">&quot;File not selected&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                CheckForValidModel(assetLoader);</span><br><span class="line">            &#125;catch (Exception exception)</span><br><span class="line">            &#123;</span><br><span class="line">                HandleException(exception);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">            FullPostLoadSetup();</span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">using</span> (<span class="keyword">var</span> assetLoader = <span class="keyword">new</span> AssetLoaderAsync())</span><br><span class="line">        &#123;</span><br><span class="line">            assetLoader.OnMetadataProcessed += AssetLoader_OnMetadataProcessed;</span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (fileBytes != <span class="literal">null</span> &amp;&amp; fileBytes.Length &gt; <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    assetLoader.LoadFromMemoryWithTextures(fileBytes, FileUtils.GetFileExtension(filename), assetLoaderOptions, <span class="literal">null</span>, <span class="built_in">delegate</span> (GameObject loadedGameObject)</span><br><span class="line">                    &#123;</span><br><span class="line">                                    CheckForValidModel(assetLoader);</span><br><span class="line">                                    _rootGameObject = loadedGameObject;</span><br><span class="line">                                    FullPostLoadSetup();</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span> (!<span class="built_in">string</span>.IsNullOrEmpty(filename))</span><br><span class="line">                &#123;</span><br><span class="line">                    assetLoader.LoadFromFileWithTextures(filename, assetLoaderOptions, <span class="literal">null</span>, <span class="built_in">delegate</span> (GameObject loadedGameObject)</span><br><span class="line">                    &#123;</span><br><span class="line">                                    CheckForValidModel(assetLoader);</span><br><span class="line">                                    _rootGameObject = loadedGameObject;</span><br><span class="line">                                    FullPostLoadSetup();</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">&quot;File not selected&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;catch (Exception exception)</span><br><span class="line">            &#123;</span><br><span class="line">                HandleException(exception);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="2-3-从文件夹一次性加载多个文件"><a href="#2-3-从文件夹一次性加载多个文件" class="headerlink" title="2.3 从文件夹一次性加载多个文件"></a>2.3 从文件夹一次性加载多个文件</h1><figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadFromBrowserFiles</span>(<span class="params"><span class="built_in">int</span> filesCount</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    LoadInternal(<span class="literal">null</span>, <span class="literal">null</span>, filesCount);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-修改Sample-cs代码，实现FBX动态加载"><a href="#3-修改Sample-cs代码，实现FBX动态加载" class="headerlink" title="3 修改Sample.cs代码，实现FBX动态加载"></a>3 修改Sample.cs代码，实现FBX动态加载</h1><p>通过取消加载的位姿配置操作，可实现FBX模型初始化装配坐标配置</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">List</span>&lt;<span class="title">GameObject</span>&gt; gameObjects</span> = <span class="keyword">new</span> List&lt;GameObject&gt;();</span><br><span class="line"><span class="function"><span class="keyword">public</span> GameObject <span class="title">DynamicLoadModel</span>(<span class="params"><span class="built_in">string</span> fbxPath</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    GameObject result = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">using</span> (<span class="keyword">var</span> assetLoader = <span class="keyword">new</span> AssetLoader())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> assetLoaderOptions = AssetLoaderOptions.CreateInstance();</span><br><span class="line">            assetLoaderOptions.AutoPlayAnimations = <span class="literal">true</span>;</span><br><span class="line">            assetLoaderOptions.UseOriginalPositionRotationAndScale = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">var</span> loadedGameObject = assetLoader.LoadFromFile(fbxPath, assetLoaderOptions);</span><br><span class="line">            result = loadedGameObject <span class="keyword">as</span> GameObject;</span><br><span class="line">        &#125;</span><br><span class="line">        catch (Exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.LogError(e.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadFBXClick</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> basePath = <span class="string">@&quot;C:\Users\Administrator\Documents\SFB\Resource\ABB\base.FBX&quot;</span>;</span><br><span class="line">    <span class="built_in">string</span> fbxPath1 = <span class="string">@&quot;C:\Users\Administrator\Documents\SFB\Resource\ABB\J1.FBX&quot;</span>;</span><br><span class="line">    <span class="built_in">string</span> fbxPath2 = <span class="string">@&quot;C:\Users\Administrator\Documents\SFB\Resource\ABB\J2.FBX&quot;</span>;</span><br><span class="line">    <span class="built_in">string</span> fbxPath3 = <span class="string">@&quot;C:\Users\Administrator\Documents\SFB\Resource\ABB\J3.FBX&quot;</span>;</span><br><span class="line">    <span class="built_in">string</span> fbxPath4 = <span class="string">@&quot;C:\Users\Administrator\Documents\SFB\Resource\ABB\J4.FBX&quot;</span>;</span><br><span class="line">    <span class="built_in">string</span> fbxPath5 = <span class="string">@&quot;C:\Users\Administrator\Documents\SFB\Resource\ABB\J5.FBX&quot;</span>;</span><br><span class="line">    <span class="built_in">string</span> fbxPath6 = <span class="string">@&quot;C:\Users\Administrator\Documents\SFB\Resource\ABB\J6.FBX&quot;</span>;</span><br><span class="line"></span><br><span class="line">    gameObjects.Add(<span class="keyword">this</span>.DynamicLoadModel(basePath));</span><br><span class="line">    gameObjects.Add(<span class="keyword">this</span>.DynamicLoadModel(fbxPath1));</span><br><span class="line">    gameObjects.Add(<span class="keyword">this</span>.DynamicLoadModel(fbxPath2));</span><br><span class="line">    gameObjects.Add(<span class="keyword">this</span>.DynamicLoadModel(fbxPath3));</span><br><span class="line">    gameObjects.Add(<span class="keyword">this</span>.DynamicLoadModel(fbxPath4));</span><br><span class="line">    gameObjects.Add(<span class="keyword">this</span>.DynamicLoadModel(fbxPath5));</span><br><span class="line">    gameObjects.Add(<span class="keyword">this</span>.DynamicLoadModel(fbxPath6));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>效果</p>
+</blockquote>
+<p><img src="/posts/undefined/AssetLoader2.PNG" alt="动态加载FBX效果"></p>
+]]></content>
+      <categories>
+        <category>Unity3D</category>
+      </categories>
+      <tags>
+        <tag>3D</tag>
+        <tag>FBX模型动态加载</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Unity3D物理引擎</title>
+    <url>/posts/undefined/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉，这个密码看着不太对，请再试试。" data-whm="抱歉，这个文章不能被纠正，不过您还是能看看解密后的内容。">
+  <script id="hbeData" type="hbeData" data-hmacdigest="6aa4fcc191448fda038fa56d17f11ba36efaf941e62b0d7d7d11f7f69de2258f">dcdd4c7f8418aae4a90e26acdd15c23ec7660503326616d3e6ce07de77cf7a0c9fc83e00dd29eb51ec8c6e36fd44137852f5d8c67d64007c6ea283458672f985740f24e1f97228bb25b6339df6570994a54b608d3463d3f7af01a1743dc10ec9f0b00c901d37aa474b4ed077a0be7caaca3b7a5dc66e44832a536002f91f92f817ab61a776254955f327d09697968f644e370688e0bc10574ca2da543d607cd2b7bae31b7d4bc89c814dc60a542476f01e250e59f502d4ec25aa909fc42479e9d0f09cb6c4e643912c5c7275cdcfff53944b6364c6d9790764c802f7f5951335830902e454af3aa0cc637c2bdea5433a7cd3bff458bba38e51a8b7dfb8e6493c621b62e6e5d01826801e54ed4ef2c992bb0282ed6f52067a69a87e226a9d6db5a021faed152f89308b2797f3882370915782db4ed15ac19accb0a5cc97d861eac7e9a55e8b5353953d2c36ef67cef5f97ceb88c1939fb22271b992aa0bc9d2874c936d14444dfc531f6631a76f4826d19a49f8b583f7e0ec3fd1c4fb5b3614ce2e641fdee057b804985c113562adf67b3f4c0d7e7479a6801c154a0c71a437aa4d9a78ebf611eb2fe52fbc8d16c87ad9a78d9c2e59ba377fd6d1e5227645d564d9b75b6c59ac40faee3045a215345b242d3101e054a72fbd06a59a234bef01cf48371b79029ebc7c5f14033e9157e09f3b86ab703bb39dceb11d5f9885d1b56e3210be440d66f67b10a8d7a7f191d141dc5603cb80b0ceefba26bffea01e8d7c20f7424026ce8eb4b4d4f0cd23d669e8f5863b70ca304cba034b5e871dddf6c205dd9874fa0d4b759c7888160ce49bd524d173c758d1ba337eaf4401217fea12612a1bb2dcb6d8eee705fc4cd55f5b9e1e42e266f6c5364030d46072c67f41eabbd7f1935dce41dba4dcee0d0daa2a27258c2362071b0ec12211713d077ac28c0a7282f3b62bb018e274a690a6c333714a5dc5b20941f00a267eb8f118cbcec4366ac821fc614a9133691a3138c07e8d13278f4b19a336dc67e50bc210946585844f973d16f3722367fab763d0def8a5f2b2292fd8db729a7845a5b88e7253dde23c2e4f2a12a5daf1ca57055d5ac82d4888052b804c0886684660fcd803119659bcdca5e1c414cebd9a01eee0c8ed0e680c7d37d586ad96cf57c57fa0c7d61cd79f48923c09256e00f5e8a1123f8e0f6940db7830cbdba17e4759b9c479eb2b89f69fa9a533d38d642e8b8f0a90630d17ebddbf05a88d221b1db0ca0744163b509b214fa1aca3f7ee8e3314ae98118c29e957db0889d1a9525c978e8df8fc081116a0f5ada195e40223f238f0fc39e190137ce2e7444dd28338a287deaca5de758d06dd3b0fcff0fe22fae5a99c26ccdc8a7d7a91e2e70300053b0046b6421e1e82b475b76739037f18d348bd289faa18c7e9df81df3084759ddaa438287928ea3ccb86383dfd872f0d4eba27b414d75ccc6b0ddf98359323f61496798cb7202e337e45ee45b23351837064da938bd90939e3df361e2d53e54a1c162377bcf79b0cad8fb89b5fd4b84d98f9ca7f2bd8b50197891db4a2ffc418b13008f2061f0cbb12f091b02e3237aec7d2b0bc91cc52aea0b5ac0f3feae02220b3d24b84a626898b75fe0be7b3215c50277245e58b99b32c7414448e4e30070557b927ad0996f88788d39e6845f3e24c104ba0b2a18ed5b7ed8ca1ef3919db5ea066d24fa7edd64f1f3197ba5b502568ba6681cd32d6c99df3ebc87639dfa8d80f0415f063bd54351a18985f8a2ffc5923019e89bb1c18f8aff02a257baa44674fd5c68ec947b646649925ec0f507071cb22b610657dcddb4450946e44e170224a500bf035e23d29975e2e480a3c648c53fe156cc6aa3e13062326380518d386f8e693995976e8baf797b1cba1f800cf4550b6ce495975effee2ec0bcd5b7f8c305e254d8faa6677a35f4abe1aea971397cebfd175d1b0f6fd586bc1b128f7352c7b37fae860ea2e7c8a59ccb950037add77e3c7527ec72f27c70273b3331246291868f24299241c3aa22fcf7f45b023360679849b4fff32c14133373bdcc04122ef016967e949927cf8af0f5db27bbe59b2e3a0bac3218b1f0ef9666c71300e4a6b59a03c76e2f859c9bd32dcd62d202df9de68ff787eadde2e97a48d0fffc06c1ff18679e50c586c2ae6a09808b87b686539b381a71887824e6430b035d0fead08ef87c66ca0de86465d33928e6d401144fab864bfa570c788da383b4a2a3a1324ee0a781ad1d850202cbcbc152b92a52570a13ebbd7a72d834d800b856d2952089290d0c73ab768c5915911efd287e513ab8532b71c9a16b8f99480a4b23983ab22f89b6966c0fddd7c447779bbfc57e313b1573c70d0e00b2737d270c7ff1b2f0fd73eb88d6c62c0b52dcba61b0489e761b6726723ff3247e12993fe8aae1c484d7e0445e92b0fad10c87119a7a2eb2b365058f4375d34def2ae66a6d55a0768c0553bf9287395b46e6718508b348908a949b9dbff21a9c0ae7be79e3dbc79d600587d0b9680832567a0a4c4c4d6722182957dafd2e2499864425095e7e3069d63a4ae69cf06624145307454fe0a30b1ef607c58c7c1810b4eae3e9d36d9cee90891a0ddcad9be12659894bc7cf487bc7d454007e2b9cf2d5b18bfbab63e9a78d4358efaa31a24c2598e3aa084d116f2330fa8d7b9596b350de1462991575e41afc99b32262bf4233ee735c54cb9650d5c984fb0fc8140a751a90cd83cdc84450762cd37e5ba9c16f4658b4adb7a1f9825d3f3f33fe715bd4fc44fa3d6d8c2e65fc4acef10f98cf84a8c707c48088403f55d18c66b14a6b595fe07fc7479ce613166899a2e7103b01bb6858eb05aff5b645860346bee06081d18b42359429f42cec4ea6dbe87dc3c604db0bd4b7ced4eedf523bd9f970c0eb9f18a2e4506b786aacb5504a5b18efd1921d0a648726d29c50d9207ebcaba94161ac80b443597634ef03ab465564d111bc26f428ff7dfceed908a96ccadd85bdc0f9d53d1d384bfa6858e2fe3b4fdbcc6cbc7cd506b73b61a0b0fafa5f3b31d30b57895bd8eb20c014dbc9ebbb4c4e48eba94c4016b5c8668b4d111f99e1d14bb04efa2c6dbddf47f82afbedc83d1dfd22af343101f78591e3454f2d9dc58a65b1881ab2ad9c7850ffd13e2b5c19fd466a3de1c771b2e5a8e63b3af07a678cae88b050e6f5ca3a85a4a66cf7f5d8ff9b1a0a8fd58b2e2bb954bf3cc81dabaf897485b9ca0a54fd8cf2de43a6b06010a1f7421f3fd178ff6749b99497e7fedc0c6c31159ecb58696c047ccbfc6f62ad0770e0877bc48d84235e2fb2ce516420baff58367d3807e7df00f7d4f31b02dcdf53db7eaeadcbd89af5344b52968a3ac820e74ecd26646c279876ce3d801dfb876878437a293506b3577ba5fc459e4a65047db6f989797046312208d8889668b629e6167c9ec7385fee8558ad85f0796b7fbbce182e79db33985047a189d3c629935638bd94086dfbda0568448ac1d2d17ef3076cfeb5f15cbbbbc27f27a43fc64be9eafb4de7f815e9ac8fc558aec26585b968a3eb23edb1df5c7a865aeb9c660fdad03a9284766a09344c2dc240371127f6dd01f280eba072ed69d92891c5c8acb81a07241f8b62648b07f324001410e18dc025f4cb0654df88d906bb31a75ec25296ab9047f5bf1f7696dde28271ec37ef53ede771b87ebae142c3933aa7fb887df9acd79cf4183f9e4b2debf787dc6ac2e08433d514e5ce0853755743a970ae6461bdd49a980d66e91e3589d17752830811fc619b8af8e0a1d25c920dd4383586971ab9464473d70a8cc46563ff23f103eaefacae8445fcf6a88b89104339d1e27177778d9a80ac086b7a0884a703366fb50a43f0cb9a4895c09a5fabfc06d02b3b24badfe41e9174ac66669765eb22b536835aa0d3b5a8f027795477b43230efdad795836379d67c1a83b4a7cdc4e7843f95f3de969231d21568bf725b1e631dbb30084e3b2a527c9ba12cbcbfa8c278ce960472dd6b9c5180d5d30865b6ce3d039df8b07cd20546d85b34e902e8c0dca11d99389e845af6b47a77fcabc31600b9ff38845f13752e3059fe71c7f46540e3c1d2f76487b10af615448b8ceb7fb5ebe40d6569220603c367947f0a92228a5a4ba771acf47ceddf5644fbf32225d1c683dada1249a9c3673dc6431f48905b27fa3d605159e5aa6c95f757c6051a8914d1a33b4d00f70a109ce3b6355303c429f6589ebbe07c5e53b9a81fe96a6fe29dd311b9727a7d027cbee9b3ce48f55eaa1d148c9fae476935e3f6f1b3fa216f892fef7f58af3fa4ad462a7e6ac5a2153281bd7b8cc1471f3c5adeb2b563e6af49629c97e1d147cd193da5c4b2995d739b35c7fc17484a9f9e6b857c56663d084e599432bf42077ed77bdcd635a7611b4507832341c5548f3aeb8a61a00a0db874bd86331f160f75501ff0cbdf34b66ab68669ab36cd514a7d498c6db310734bef62d481b6b1cbe60e1957fa06e8e1cf5fe543e2b40e250e192f756e2bebced3a5d5985626c03d5e780f99f42f66fefecbc40669c358338efc6c01a34286982d218e750a6c9a0952c3d6c5d103357c69df0f0e642303dd061024436a1e2439fc6c7150f3c89d98df7874f94bc83c01992c9ff8c1212bb9007c490c4167811b620adfc642a4600aabc05dab9abce8000660542b8f4d3702ce3aa1ef57f71e56889e9c075284127c2b138adc2ff3118704b599e6113a2389632ac450df9e2d259cd50f5c0d272407da3b8f5da2cd678022b902cb6a37e04764e49a19bac457aea8b1eca16c9ab8846d64723843849636ce0d8e30ea0ee5790fefacdd26ce9b2958472afa484af639d15f4d130a063db15697a41f6e30a30d53fe5a2ec1acf08c73ada078670fee1d34aa697733903ce2e1b7d2d54bc0ff8ce5b213ae0ae997ee400a08e903f3307a8bbef3a4781f0196a952549c44696955f81968500a197e2dbfc3099c99c06d8b3ed7d72425c7a218f2da4dd0e0472b116b44cb3b9b7fb3498aec6d691258711df87404de71f5a293e0390c9b578d56fa59effdd51d4da884d17e320b6c8f490bbed51bd3722b5afb3c0ed8b3064ddcaf3737e336d4d80565a142151ce8e4a1aa243fee6665da496b6a056990eb0e8d917c1b8d0e5c2ace9c821d5a3c1d277f895a13b2be9ee7ae135bc550ae9bbd18187242e03c4069f4da6f27037f6a4e253c18540ddd909184599de5c5cb02dd5ab5a892feffde57ca750427cee87ad364e45adcb37cf2b1eb928068b98a47f874924db7a4f1f4aa7b199dc655daa2734e0d22591118d2702aa47180aa7f0737c05d0112d5eef1db684effcbf7c11844199dbaa29e94c5c5bdab4c312ef3c99e0a97ccfec79696b4f36cf5b377500b258f5d21f8fc0d9f838d7692cb6afcd5ae050e8921c7841832da136b2ae6f2e572ebcec1f212c02f63ec8d0d9174bbdc6c89353f70b5535276b5fd78ec96bc0d4d12031082425a8b063a706c64e89e0bdc336e0ec19b07381ff739fd90cc3d43e9c59b4638f0bfaa41f7242a7812eed4bad0b56a4632f79e02f732f080f3ed5424a42adc7ddd7a4460b8b86820700f2c8f99f6bbaa82c654ae5f7682c6057420568930d3882069721bcdc64a290d1eb8bbbebb854be68aef074bf8a1d816d130198324ea32070e49fa2dce1d7affffbc75bd8a88683c22b0f8b0d2f4f0b1c2353b58ea0f8c7ca5e1fdc79cf64703695d87d3a31cd86b1292ed1bcdee3d3824f4c4e973296da55074975d2755bb713b46406e47f9fe04b8c59da5068427988df1a37d8ec2352a01306bcca196c5832e18a410e33991099ef095c263191f1fa2cc538cc25949afe1aa3a8dc51f8556baffe49aab8fc18480f2a6af17f2d4d43f3eb68d4f9fbb5d322d782aaa30017f8cd275314c70a8e2b2dc1ada67d745dcbb692e8136e218923ca4fe71a2552463d63a180aa9d24f45b3421cbb0fc1d356945386a67d5340e39cd65c40d0ade4e8172929f02098778c1193f1836fff78fb6600760853c8489165601cc24b7f870ca8e1b4e59208978e3501d63ad392f109ed544155caeb5588f5a69bcb60e339ef4cad2ebb4f6848e1a5d471548f452772b746c666cda06d74bb5ba9ccbca469d6022e0fc593979e997c09642e3d132450318f494ed6efd55522e3a5f2de6fa827c0d8947e117164ef32ad8d6cfdbf8e9753adb0eb7aabd92986f8e233ef66e431bbedf2dd172bee123f9bba49b9a6e5012acf5529d7f58a200f175f4144f01e0416d628e18104dc6acf1064ebe7cca5d0e4e1c788c925316db9a59adf1de2b84117be0649812bddc57ca850c82679404f36e837e1ae2e8ecc8f4cbb6e12eff9c181764f688e890c3ebdd79dfca80fbc3734bfa4b2f293823c5d8af51d50061111a4aa144b504ed22374eedf0a63a07959d4468d307156907e3eec61575c1a9d5ed19921b12d2ca4a53a45ec4f94f5d323361b22f45a470086bbc8403ccbfbec9ca571d37330ec6eac9c2867a7fc6402dc05da9ee811e2e4ed468fbfa4cf6be69c0656bcc5e671ac54e6c1796f743099da7a33223e4f3d33a60c95dad8c385b186332780236f6c16597280c13c8c6025206c363ee6d6fae496b206eb7c7ad93b6d1814ddc244e2d037eff428b7c23dc448644f95f14cf47057ffe68083432238e55853c1d57a34dfbb9fcc4367bf6bafe72c264be0c31adee93b872c6423e078ba4e0d4b9f38e095de482a2a559cbb225cb89628011d5133c9cff3ba5deb83b3d523670eba98cd6cbe1873f9d0edc920389b7ac8bc1ba926a5448475adc08e453b3463926bacb14ea2946dce6c3d607f12dbf6410e1976fa50879113a44e1bb12a2000d261665df54c6f0ff0706692f6928dd4e57026d4489a1ac5b5bae7efb2e893fab90f48fb5ffd183bbfe2435e852bc67a2424edbe41ae1b1f1e2e00779c72982e3ed14a05efea63396d99e29f3ab9931d2794608363116ff7b005edb547dc8cd12ef7bad0e5ae4e2205f07b3cffccc0f55474836120956c300222a7a62b8b32e9b709c7fcd778fdcdb3267b5d695a3ad171b8f3768c90ad5136a9c243b659bbf3908c2cc891f4302f251532d118a89fa4077c621f85dadbaa012bf078898769a99b4aa04b47e25f6f6c4ba739e7732c8261ad0385ede012c2df1888eb789f5a1f1054b390a7f7e35083e3d1ea3afb5a34bc3110fd7a8709c59b582c863dbae529a71b3e230</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好，这里需要密码。</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>Unity3D</category>
+      </categories>
+      <tags>
+        <tag>3D</tag>
+        <tag>物理引擎</tag>
       </tags>
   </entry>
 </search>
